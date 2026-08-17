@@ -144,8 +144,6 @@ window.__ModuleLoader__.load({
 .dsh-theme-set-prev .dot{position:absolute;right:7px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--dt-accent);box-shadow:0 0 0 2px var(--dt-surface)}
 .dsh-theme-set-prev .chips{position:absolute;left:7px;bottom:4px;gap:3px;display:flex}
 .dsh-theme-set-prev .chips i{width:13px;height:6px;border-radius:2px;display:block}
-.dsh-theme-set-check{display:none;position:absolute;right:4px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--dsw-alias-brand-primary);color:var(--dsw-alias-label-primary-foreground);z-index:1;font-size:10px;font-weight:700;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-.dsh-theme-set-card[data-on="true"] .dsh-theme-set-check{display:grid}
 .dsh-theme-set-nm{color:var(--dsw-alias-label-secondary);font-size:11px;line-height:14px;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dsh-theme-set-card[data-on="true"] .dsh-theme-set-nm{color:var(--dsw-alias-label-primary);font-weight:600}
 .dsh-theme-set-foot{justify-content:space-between;align-items:center;gap:8px;display:flex}
@@ -185,7 +183,6 @@ window.__ModuleLoader__.load({
           h("span", { className: "bub" }),
           h("span", { className: "dot" }),
           h("span", { className: "chips" }, [bg, surface, accent].map((c) => h("i", { style: { background: c } }))),
-          h("span", { className: "dsh-theme-set-check" }, "✓"),
         ]);
         return h(
           "button",
