@@ -30,6 +30,17 @@ DSH 的客户端插件**没有自动发现机制**。要让插件生效，必须
 > - `exports["."]` 指向可 import 的服务端入口（`lib/index.js`）——否则报 `ERR_PACKAGE_PATH_NOT_EXPORTED`；
 > - 该入口导出一个合法的 cordis 插件（`{ name, apply }`）——否则 loader 建 fiber 失败。
 
+### 捷径：一键安装脚本
+
+仓库自带 `scripts/install.mjs`，把 ①② 一次做完（幂等、自动备份补丁文件）：
+
+```bash
+cd /path/to/dsh-theme
+node scripts/install.mjs          # 默认装进 web profile；--profile <名> 指定其他 profile
+```
+
+跑完后只需重启 `dsh web`。脚本内部等价于下面的手动步骤。
+
 ### Step 1 — 构建并安装
 
 ```bash

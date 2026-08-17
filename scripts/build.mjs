@@ -244,12 +244,49 @@ function runtimeData(t) {
 /* ------------------------------------------------------------------ */
 /* build                                                               */
 /* ------------------------------------------------------------------ */
-function main() {
+/**
+* Fetch the token set of a RUNNING DSH web instance (index → asset CSS).
+* Lets `--live` verify catch token drift against the actual deployment
+* instead of the checked-in KNOWN_TOKENS snapshot.
+*/
+async function fetchLiveTokens() {
+	const base = process.env.DSH_LIVE_URL || "http://127.0.0.1:3080";
+	const index = await (await fetch(base + "/")).text();
+	const assets = [...index.matchAll(/href="([^"]*\.css[^"]*)"/g)].map((m) => m[1]);
+	let css = "";
+	for (const asset of assets) {
+		try {
+			css += await (await fetch(base + asset)).text();
+		} catch {}
+	}
+	if (!css) throw new Error(`no CSS assets fetched from ${base}`);
+	return new Set(css.match(/--[a-z0-9-]+/g) ?? []);
+}
+
+/** Tokens referenced by the client plugin's own UI (ROW_CSS + previews). */
+function clientPluginTokens() {
+	const template = readFileSync(join(SRC, "client.template.js"), "utf8");
+	const names = [...template.matchAll(/var\((--[a-z0-9-]+)/g)].map((m) => m[1]);
+	return [...new Set(names)].filter((n) => n.startsWith("--dsw-") || n.startsWith("--shiki-"));
+}
+
+async function main() {
   const onlyVerify = process.argv.includes("--verify-only");
+  const live = process.argv.includes("--live");
   const themes = JSON.parse(readFileSync(join(SRC, "themes.json"), "utf8")).themes;
 
+  let tokenSet = KNOWN_TOKENS;
+  if (live) {
+    try {
+      tokenSet = await fetchLiveTokens();
+      console.log(`✔ --live: verified against running DSH CSS (${tokenSet.size} tokens)`);
+    } catch (error) {
+      console.warn(`⚠ --live fetch failed (${error.message}) — falling back to KNOWN_TOKENS`);
+    }
+  }
+
   if (onlyVerify) {
-    const ok = verify(themes);
+    const ok = verify(themes, tokenSet);
     process.exit(ok ? 0 : 1);
   }
 
@@ -466,16 +503,19 @@ const KNOWN_TOKENS = new Set(`
 --shiki-token-function --shiki-token-string-expression --shiki-token-punctuation --shiki-token-link
 `.trim().split(/\s+/));
 
-function verify(themes) {
+function verify(themes, tokenSet = KNOWN_TOKENS) {
   let bad = 0;
+  const checkNames = (label, names) => {
+    const unknown = [...new Set(names)].filter((n) => !tokenSet.has(n));
+    if (unknown.length) {
+      bad++;
+      console.error(`✘ ${label}: unknown tokens → ${unknown.join(", ")}`);
+    }
+  };
   for (const t of themes) {
     const css = themeCss(t);
     const names = [...css.matchAll(/(--[a-z0-9-]+)/g)].map((m) => m[1]);
-    const unknown = [...new Set(names)].filter((n) => !KNOWN_TOKENS.has(n));
-    if (unknown.length) {
-      bad++;
-      console.error(`✘ ${t.id}: unknown tokens → ${unknown.join(", ")}`);
-    }
+    checkNames(t.id, names);
     // brace balance
     const open = (css.match(/\{/g) || []).length;
     const close = (css.match(/\}/g) || []).length;
@@ -484,9 +524,11 @@ function verify(themes) {
       console.error(`✘ ${t.id}: unbalanced braces (${open} vs ${close})`);
     }
   }
-  if (!bad) console.log("✔ token verification passed for all themes");
-  else console.error(`✘ verification failed for ${bad} theme(s)`);
+  // the client plugin's own UI tokens must exist in the DSH token set too
+  checkNames("client.template.js (settings row)", clientPluginTokens());
+  if (!bad) console.log("✔ token verification passed for all themes + client UI");
+  else console.error(`✘ verification failed for ${bad} item(s)`);
   return bad === 0;
 }
 
-main();
+await main();

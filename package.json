@@ -23,11 +23,15 @@
   "files": [
     "lib",
     "themes",
-    "preview.html"
+    "preview.html",
+    "scripts",
+    "docs"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "verify": "node scripts/build.mjs --verify-only"
+    "verify": "node scripts/build.mjs --verify-only",
+    "verify:live": "node scripts/build.mjs --verify-only --live",
+    "install:local": "node scripts/install.mjs"
   },
   "keywords": [
     "deepseek",

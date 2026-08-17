@@ -88,7 +88,21 @@ dsh-theme/
 
 ---
 
-## 通过 Agent 快速安装（3 分钟）
+## 快速安装（三选一）
+
+### 方式 0：一键安装脚本（推荐给普通用户 / Agent）
+
+克隆仓库后直接运行（自动完成构建 + `dsh plugin add` + loader 条目写入，幂等、带备份）：
+
+```bash
+git clone https://github.com/mux9056-bot/dsh-theme ~/dsh-theme
+cd ~/dsh-theme
+node scripts/install.mjs          # 可选：--profile <名字> 装到其他 profile；--no-build 跳过构建
+```
+
+脚本跑完只需**重启 `dsh web`** 并刷新页面。详细说明见 [docs/AGENT.md](docs/AGENT.md)。
+
+### 通过 Agent 安装（3 分钟）
 
 如果你用 DeepSeek Harness 或其他 AI Agent，把下面这段指令**直接复制发给你的 Agent**，
 它会照着 [docs/AGENT.md](docs/AGENT.md) 自动完成安装、重启与验证：
@@ -266,16 +280,32 @@ DSH 真实令牌（全部经过与 DSH 实际 CSS 的差集校验，无拼写错
 ## 开发与验证
 
 ```bash
-npm run build        # 全量构建 + 令牌校验
-npm run verify       # 仅校验（令牌名 ∈ DSH 令牌集、花括号配平）
+npm run build              # 全量构建 + 令牌校验
+npm run verify             # 仅校验（令牌名 ∈ 内置 DSH 令牌集、花括号配平）
+npm run verify:live        # ★ 校验时对比「运行中的 DSH」真实 CSS（DSH 升级后用它复检令牌漂移）
 node scripts/plugintest.mjs    # 对运行中的 DSH (http://127.0.0.1:3080) 做插件集成测试
 node scripts/screenshot.mjs ocean light shots/ocean-light.png   # 截图验证某主题
 node scripts/pixelcheck.mjs shots/ocean-light.png eef5fb        # 像素级校验主色
 ```
 
+`verify:live` 会抓取运行中 DSH 的样式资源并提取全部 `--dsw-*` / `--shiki-*` 令牌，把 30 个主题
+**以及设置行的 UI 令牌**一并与真实令牌集比对 —— 这是 DSH 升级后最可靠的适配自检。
+（`DSH_LIVE_URL` 环境变量可指定别的实例地址。）
+
 集成测试会模拟 DSH loader 的真实加载路径：`__ModuleLoader__.load` 注册 → `__DSH_MODULES__.materialize(id)`
 → `apply(ctx)`，并断言：30 个色块、主题切换后 computed style 命中插槽色、深浅色切换、轮换/重置、
 刷新后持久化恢复。
+
+---
+
+## 开源 / 发布
+
+- **npm 发布**：包名 `dsh-theme` 在 npm 上未被占用，可 `npm publish`；用户随后只需
+  `dsh plugin --profile web add dsh-theme` + loader 条目 + 重启（见上）。
+- **⚠️ 旧包 `dsh-theme-pack@1.0.0`**（已存在于 npm）是早期版本：缺少服务端入口（`exports["."]` /
+  `lib/index.js`），装进 DSH 会报 `ERR_PACKAGE_PATH_NOT_EXPORTED`，**不要**用它；请用本仓库的新包名。
+- **发布前检查清单**：`npm run verify:live` 通过 → `npm run build` → `npm pack` 确认产物包含
+  `lib/`、`themes/`、`scripts/`、`docs/`。
 
 ---
 
@@ -290,11 +320,12 @@ node scripts/pixelcheck.mjs shots/ocean-light.png eef5fb        # 像素级校�
   boot manifest。参见 [docs/AGENT.md](docs/AGENT.md) 的排障章节。
 - **服务端入口必需**：loader 会 `import()` 插件包，因此 `exports["."]` 与 `lib/index.js` 缺一不可；
   漏掉会报 `ERR_PACKAGE_PATH_NOT_EXPORTED` 或 `ERR_MODULE_NOT_FOUND`。
-- **样式隔离**：设置行样式与当前主题 CSS 分属两个 `<style>` 元素，任何主题切换/清空都不会破坏行样式。
+- **样式隔离**：设置行样式与当前主题 CSS 分属两个 `<style>` 元素，任何主题切换/清空都不会破坏行样式；
+  深色模式下色卡预览条跟随 `body[data-ds-dark-theme]` 切换为对应深色 swatch。
 - **主题标识**：主题通过 `body[data-dsh-theme="<id>"]` 生效，与 DSH 内置外观（浅/深）正交，二者可自由组合。
-- **兼容性**：令牌名取自 DSH `0.1.0-rc.6` 的 Web 产物；DSH 升级若改动令牌名，用 `npm run verify` 复检。
+- **兼容性**：令牌名取自 DSH `0.1.0-rc.6` 的 Web 产物；DSH 升级后请用 `npm run verify:live` 复检。
 - **依赖平台 seed**：设置行用 `react` + `slots` 服务（DSH 平台 seed，`inject: ["slots"]`），
-  需要 DSH 版本提供这两个 seed（`0.1.0-rc.6` 起包含）。
+  需要 DSH 版本提供这两个 seed（`0.1.0-rc.6` 起包含）；缺失时插件优雅降级（仅保留 `window.dshTheme` API）。
 
 ## License
 
