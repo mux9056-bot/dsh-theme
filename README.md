@@ -88,6 +88,29 @@ dsh-theme/
 
 ---
 
+## 通过 Agent 快速安装（3 分钟）
+
+如果你用 DeepSeek Harness 或其他 AI Agent，把下面这段指令**直接复制发给你的 Agent**，
+它会照着 [docs/AGENT.md](docs/AGENT.md) 自动完成安装、重启与验证：
+
+> **📋 给 Agent 的安装指令（可直接复制）**
+>
+> 请帮我把 dsh-theme 主题插件安装到 DSH web 界面（仓库：https://github.com/mux9056-bot/dsh-theme ）：
+> 1. clone 仓库到持久路径（如 `~/dsh-theme`，不要用 /tmp）；若无 `lib/client.js` 先执行 `npm run build`
+> 2. 安装进 web profile：`COREPACK_ENABLE_PROJECT_SPEC=0 dsh plugin --profile web add ~/dsh-theme`
+>    （若报 corepack 权限错就用这个前缀重试）
+> 3. **必须**在 `$DSH_HOME/profiles/web/cordis.patch.yml` 追加 loader 条目：
+>    `- insert: [{ id: theme, name: 'dsh-theme' }]` —— 客户端插件没有自动发现，漏掉就不生效
+> 4. 重启 `dsh web`（注意：agent 通常运行在 dsh web 进程内，需用 detach 方式重启并留出收尾时间；或让用户手动重启）
+> 5. 验证：`curl -s http://127.0.0.1:3080/ | grep '"id":"dsh-theme"'` 命中；
+>    并打开「设置 → 通用」确认出现「主题包 · 30 款」色卡行
+> 6. 完成后告诉我，我刷新页面即可使用
+
+Agent 会自行处理所有已知坑（corepack 权限、loader 条目、重启时机、manifest 验证）；
+遇到异常可直接让它查阅 [docs/AGENT.md](docs/AGENT.md) 的排障清单。手动安装见下节。
+
+---
+
 ## 快速接入（DSH 原生方案）
 
 > ⚠️ **重要**：DSH 的客户端插件（`dsh.client` 清单）**没有自动发现机制**。光把包装进 profile 的
@@ -176,7 +199,7 @@ document.body.setAttribute("data-dsh-theme", "ocean");
 | 功能 | 说明 |
 |---|---|
 | 🎨 设置页集成 | 「设置 → 通用」新增「主题包」分区（`settings.general.item` 槽位，`order: 20`，在内置「外观」行之下） |
-| 色卡网格 | 30 张主题色卡（渐变迷你预览 + 强调色圆点 + 色块 chips + 名称），选中高亮 + ✓ |
+| 色卡网格 | 30 张主题色卡（渐变迷你预览 + 强调色圆点 + 色块 chips + 名称），选中态高亮边框 + 加粗名称 |
 | 浅/深/自动 | 行内三态切换；「自动」跟随 DSH 内置外观设置 |
 | 恢复默认 | 行尾「恢复默认」按钮，移除 `data-dsh-theme` 并清空主题 CSS |
 | 持久化 | 选择写入 `localStorage`（`dsh-theme:theme` / `dsh-theme:mode`），刷新/重启后自动恢复 |
