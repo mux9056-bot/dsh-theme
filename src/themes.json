@@ -1,0 +1,308 @@
+{
+  "themes": [
+    {
+      "id": "ocean",
+      "name": "Ocean",
+      "nameZh": "海洋",
+      "desc": "Cool blue seas and quiet depth.",
+      "descZh": "清凉的蓝，安静而深邃。",
+      "tags": ["light", "cool", "blue"],
+      "light": { "bg": "#eef5fb", "surface": "#ffffff", "surfaceAlt": "#e4eef7", "text": "#0f2440", "text2": "#3e5c78", "text3": "#6e8aa3", "border": "rgba(15,36,64,0.10)", "accent": "#0e7490", "accentText": "#ffffff", "accentHover": "#155e75", "code": "#e6f0f8", "codeBanner": "#ddebf5", "sidebar": "#e7f1f9", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#0b1722", "surface": "#0f1f2d", "surfaceAlt": "#15293a", "text": "#e6f1f9", "text2": "#9db8cc", "text3": "#6d8ba3", "border": "rgba(230,241,249,0.10)", "accent": "#22d3ee", "accentText": "#06222b", "accentHover": "#67e8f9", "code": "#0d1c29", "codeBanner": "#122434", "sidebar": "#0c1a26", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "nameZh": "午夜",
+      "desc": "Deep navy with electric blue accents.",
+      "descZh": "深夜藏蓝，缀以电光蓝。",
+      "tags": ["dark", "cool", "blue"],
+      "light": { "bg": "#f1f4f9", "surface": "#ffffff", "surfaceAlt": "#e8edf4", "text": "#0b1c33", "text2": "#44597a", "text3": "#73849f", "border": "rgba(11,28,51,0.10)", "accent": "#2563eb", "accentText": "#ffffff", "accentHover": "#1d4ed8", "code": "#e9eef6", "codeBanner": "#e0e8f2", "sidebar": "#e8edf5", "warn": "#b45309", "error": "#dc2626", "success": "#16a34a" },
+      "dark": { "bg": "#070d1a", "surface": "#0d1526", "surfaceAlt": "#141f36", "text": "#dbe7fb", "text2": "#8fa8cf", "text3": "#64789c", "border": "rgba(219,231,251,0.10)", "accent": "#3b82f6", "accentText": "#061024", "accentHover": "#60a5fa", "code": "#0b1322", "codeBanner": "#101a2e", "sidebar": "#0a1120", "warn": "#fbbf24", "error": "#f87171", "success": "#34d399" }
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "nameZh": "极光",
+      "desc": "Violet skies melting into teal.",
+      "descZh": "紫罗兰与青碧交融的夜空。",
+      "tags": ["dark", "purple", "teal"],
+      "light": { "bg": "#f2f4fb", "surface": "#ffffff", "surfaceAlt": "#eaeaf7", "text": "#221a3e", "text2": "#5b5480", "text3": "#847ca6", "border": "rgba(34,26,62,0.10)", "accent": "#7c3aed", "accentText": "#ffffff", "accentHover": "#6d28d9", "code": "#edeffa", "codeBanner": "#e6e7f6", "sidebar": "#ecedf9", "warn": "#b45309", "error": "#dc2626", "success": "#0d9488" },
+      "dark": { "bg": "#0e0a1f", "surface": "#151031", "surfaceAlt": "#1d1740", "text": "#ece7ff", "text2": "#a99fd8", "text3": "#746a9e", "border": "rgba(236,231,255,0.10)", "accent": "#a78bfa", "accentText": "#1a1030", "accentHover": "#c4b5fd", "code": "#120d28", "codeBanner": "#181238", "sidebar": "#100b24", "warn": "#fbbf24", "error": "#fb7185", "success": "#2dd4bf" }
+    },
+    {
+      "id": "lava",
+      "name": "Lava",
+      "nameZh": "熔岩",
+      "desc": "Charcoal rock with ember-orange fire.",
+      "descZh": "炭黑岩层，燃烧的橙红余烬。",
+      "tags": ["dark", "warm", "orange"],
+      "light": { "bg": "#f7f2f0", "surface": "#ffffff", "surfaceAlt": "#f0e8e5", "text": "#2b1712", "text2": "#6b4a40", "text3": "#93746a", "border": "rgba(43,23,18,0.10)", "accent": "#ea580c", "accentText": "#ffffff", "accentHover": "#c2410c", "code": "#f3ece8", "codeBanner": "#ede2dc", "sidebar": "#f2eae6", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#150e0b", "surface": "#1e1410", "surfaceAlt": "#2a1a14", "text": "#fdeee8", "text2": "#c98f7a", "text3": "#96695a", "border": "rgba(253,238,232,0.10)", "accent": "#f97316", "accentText": "#1f0a02", "accentHover": "#fb923c", "code": "#1a110d", "codeBanner": "#241712", "sidebar": "#180f0c", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "nameZh": "森林",
+      "desc": "Pine greens and soft moss.",
+      "descZh": "松绿与柔软的苔藓。",
+      "tags": ["light", "green"],
+      "light": { "bg": "#f0f6f0", "surface": "#ffffff", "surfaceAlt": "#e4efe4", "text": "#14261a", "text2": "#44604e", "text3": "#71877b", "border": "rgba(20,38,26,0.10)", "accent": "#15803d", "accentText": "#ffffff", "accentHover": "#166534", "code": "#e6f0e7", "codeBanner": "#dceadc", "sidebar": "#e6f0e7", "warn": "#b45309", "error": "#dc2626", "success": "#16a34a" },
+      "dark": { "bg": "#0c150f", "surface": "#122017", "surfaceAlt": "#1a2d20", "text": "#e2f2e7", "text2": "#96b8a2", "text3": "#66836f", "border": "rgba(226,242,231,0.10)", "accent": "#4ade80", "accentText": "#052e14", "accentHover": "#86efac", "code": "#0f1b14", "codeBanner": "#16261b", "sidebar": "#0e1812", "warn": "#fbbf24", "error": "#f87171", "success": "#34d399" }
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura",
+      "nameZh": "樱花",
+      "desc": "Blossom pinks on a pale spring sky.",
+      "descZh": "淡粉的春日，落樱如雨。",
+      "tags": ["light", "pink", "warm"],
+      "light": { "bg": "#fff4f6", "surface": "#ffffff", "surfaceAlt": "#fbe7ec", "text": "#3d1420", "text2": "#8a4a5c", "text3": "#ad7a8a", "border": "rgba(61,20,32,0.10)", "accent": "#db2777", "accentText": "#ffffff", "accentHover": "#be185d", "code": "#fbeaf0", "codeBanner": "#f8dfe8", "sidebar": "#fceef2", "warn": "#b45309", "error": "#e11d48", "success": "#15803d" },
+      "dark": { "bg": "#1d0f16", "surface": "#281420", "surfaceAlt": "#361b29", "text": "#fdeef4", "text2": "#d49db2", "text3": "#a06b83", "border": "rgba(253,238,244,0.10)", "accent": "#f472b6", "accentText": "#2a0515", "accentHover": "#f9a8d4", "code": "#22111b", "codeBanner": "#2d1825", "sidebar": "#200f18", "warn": "#fbbf24", "error": "#fb7185", "success": "#4ade80" }
+    },
+    {
+      "id": "sunset",
+      "name": "Sunset",
+      "nameZh": "日落",
+      "desc": "Warm peach fading into dusk.",
+      "descZh": "暖桃色渐入黄昏。",
+      "tags": ["light", "warm", "orange"],
+      "light": { "bg": "#fdf4ee", "surface": "#ffffff", "surfaceAlt": "#f9e7db", "text": "#331a10", "text2": "#7a4a33", "text3": "#a4765f", "border": "rgba(51,26,16,0.10)", "accent": "#ea580c", "accentText": "#ffffff", "accentHover": "#c2410c", "code": "#f9ece2", "codeBanner": "#f5e2d4", "sidebar": "#f9ecdf", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#180e10", "surface": "#211316", "surfaceAlt": "#2e1a1e", "text": "#fdf0ec", "text2": "#d2a090", "text3": "#9c7167", "border": "rgba(253,240,236,0.10)", "accent": "#fb923c", "accentText": "#260b02", "accentHover": "#fdba74", "code": "#1d1113", "codeBanner": "#28171a", "sidebar": "#1a1012", "warn": "#fbbf24", "error": "#fb7185", "success": "#4ade80" }
+    },
+    {
+      "id": "graphite",
+      "name": "Graphite",
+      "nameZh": "石墨",
+      "desc": "Soft neutral gray, easy on the eyes.",
+      "descZh": "柔和的暖灰，护眼耐看。",
+      "tags": ["neutral", "minimal"],
+      "light": { "bg": "#f6f6f5", "surface": "#ffffff", "surfaceAlt": "#ececea", "text": "#1c1c1a", "text2": "#5c5c57", "text3": "#8b8b85", "border": "rgba(28,28,26,0.10)", "accent": "#3f3f3c", "accentText": "#ffffff", "accentHover": "#2e2e2b", "code": "#eeedeb", "codeBanner": "#e7e6e3", "sidebar": "#ededeb", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#161614", "surface": "#1d1d1a", "surfaceAlt": "#262622", "text": "#ececea", "text2": "#a3a39c", "text3": "#71716b", "border": "rgba(236,236,234,0.10)", "accent": "#e4e4e0", "accentText": "#161614", "accentHover": "#ffffff", "code": "#1a1a17", "codeBanner": "#21211e", "sidebar": "#181816", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "ink",
+      "name": "Ink",
+      "nameZh": "墨黑",
+      "desc": "Pure black and white, nothing more.",
+      "descZh": "纯粹的黑与白，至简。",
+      "tags": ["dark", "neutral", "minimal"],
+      "light": { "bg": "#fafafa", "surface": "#ffffff", "surfaceAlt": "#f0f0f0", "text": "#0a0a0a", "text2": "#525252", "text3": "#8a8a8a", "border": "rgba(10,10,10,0.12)", "accent": "#0a0a0a", "accentText": "#ffffff", "accentHover": "#333333", "code": "#f2f2f2", "codeBanner": "#ebebeb", "sidebar": "#f4f4f4", "warn": "#b45309", "error": "#dc2626", "success": "#16a34a" },
+      "dark": { "bg": "#0a0a0a", "surface": "#111111", "surfaceAlt": "#1a1a1a", "text": "#f5f5f5", "text2": "#a3a3a3", "text3": "#6e6e6e", "border": "rgba(255,255,255,0.12)", "accent": "#ffffff", "accentText": "#0a0a0a", "accentHover": "#d4d4d4", "code": "#0e0e0e", "codeBanner": "#161616", "sidebar": "#0d0d0d", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "paper",
+      "name": "Paper",
+      "nameZh": "纸张",
+      "desc": "Warm cream like a well-read notebook.",
+      "descZh": "暖奶油色，像一本翻旧了的笔记本。",
+      "tags": ["light", "warm", "cream"],
+      "light": { "bg": "#faf6ef", "surface": "#fffdf8", "surfaceAlt": "#f2ece1", "text": "#2f2417", "text2": "#6b5943", "text3": "#9a8870", "border": "rgba(47,36,23,0.12)", "accent": "#8a5a2b", "accentText": "#ffffff", "accentHover": "#6f481f", "code": "#f3ede2", "codeBanner": "#ede4d5", "sidebar": "#f4eee4", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#171310", "surface": "#1f1a15", "surfaceAlt": "#2a231b", "text": "#f3ece1", "text2": "#b4a489", "text3": "#857763", "border": "rgba(243,236,225,0.10)", "accent": "#d4a15c", "accentText": "#241505", "accentHover": "#e3b877", "code": "#1b1611", "codeBanner": "#241d16", "sidebar": "#191511", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "amber",
+      "name": "Amber",
+      "nameZh": "琥珀",
+      "desc": "Golden honey light, warm and clear.",
+      "descZh": "蜂蜜般的金色，温暖透亮。",
+      "tags": ["light", "warm", "amber"],
+      "light": { "bg": "#fff9e8", "surface": "#fffdf5", "surfaceAlt": "#f8efd2", "text": "#33260e", "text2": "#6f5a2c", "text3": "#9c8957", "border": "rgba(51,38,14,0.10)", "accent": "#b45309", "accentText": "#ffffff", "accentHover": "#92400e", "code": "#f8f0d8", "codeBanner": "#f3e8c6", "sidebar": "#f9f1dc", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#171207", "surface": "#201809", "surfaceAlt": "#2c210e", "text": "#faf0d3", "text2": "#c4a968", "text3": "#8f7a45", "border": "rgba(250,240,211,0.10)", "accent": "#f59e0b", "accentText": "#221301", "accentHover": "#fbbf24", "code": "#1c1508", "codeBanner": "#251b0b", "sidebar": "#191306", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "mint",
+      "name": "Mint",
+      "nameZh": "薄荷",
+      "desc": "Fresh green-teal, crisp and cool.",
+      "descZh": "清新的青绿，脆爽清凉。",
+      "tags": ["light", "green", "teal"],
+      "light": { "bg": "#eff8f2", "surface": "#ffffff", "surfaceAlt": "#e2f2e8", "text": "#0e2b1d", "text2": "#3f6652", "text3": "#6f9080", "border": "rgba(14,43,29,0.10)", "accent": "#059669", "accentText": "#ffffff", "accentHover": "#047857", "code": "#e2f2e8", "codeBanner": "#d8ecdf", "sidebar": "#e6f3eb", "warn": "#b45309", "error": "#dc2626", "success": "#16a34a" },
+      "dark": { "bg": "#0a1611", "surface": "#10221a", "surfaceAlt": "#172e23", "text": "#def3e8", "text2": "#8fc0a8", "text3": "#5f8a75", "border": "rgba(222,243,232,0.10)", "accent": "#34d399", "accentText": "#04231a", "accentHover": "#6ee7b7", "code": "#0d1d16", "codeBanner": "#13271d", "sidebar": "#0c1913", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "violet",
+      "name": "Violet",
+      "nameZh": "紫罗兰",
+      "desc": "Soft lavender-purple with a regal accent.",
+      "descZh": "柔和的紫，带着一丝庄重。",
+      "tags": ["light", "purple"],
+      "light": { "bg": "#f6f2fd", "surface": "#ffffff", "surfaceAlt": "#ece5f8", "text": "#241538", "text2": "#5c4680", "text3": "#8570a8", "border": "rgba(36,21,56,0.10)", "accent": "#7c3aed", "accentText": "#ffffff", "accentHover": "#6d28d9", "code": "#ece6f8", "codeBanner": "#e4daf4", "sidebar": "#eee8fa", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#120b1e", "surface": "#191031", "surfaceAlt": "#231540", "text": "#efe8ff", "text2": "#b3a2e0", "text3": "#7e6ca8", "border": "rgba(239,232,255,0.10)", "accent": "#a78bfa", "accentText": "#1d0f38", "accentHover": "#c4b5fd", "code": "#150d26", "codeBanner": "#1c1233", "sidebar": "#140c22", "warn": "#fbbf24", "error": "#fb7185", "success": "#4ade80" }
+    },
+    {
+      "id": "cyber",
+      "name": "Cyber",
+      "nameZh": "赛博",
+      "desc": "Neon cyan on near-black circuit board.",
+      "descZh": "近黑底上的霓虹青，赛博电路板。",
+      "tags": ["dark", "neon", "blue"],
+      "light": { "bg": "#eef6fb", "surface": "#ffffff", "surfaceAlt": "#e2f0f8", "text": "#0c2438", "text2": "#3d5f7d", "text3": "#6d8aa5", "border": "rgba(12,36,56,0.10)", "accent": "#0891b2", "accentText": "#ffffff", "accentHover": "#0e7490", "code": "#e0f0f8", "codeBanner": "#d6ebf5", "sidebar": "#e4f1f9", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#070b14", "surface": "#0d1422", "surfaceAlt": "#162032", "text": "#dff2ff", "text2": "#8fb4d8", "text3": "#64849f", "border": "rgba(223,242,255,0.10)", "accent": "#22d3ee", "accentText": "#05222b", "accentHover": "#67e8f9", "code": "#0a111d", "codeBanner": "#101a2a", "sidebar": "#090e19", "warn": "#fbbf24", "error": "#fb7185", "success": "#4ade80" }
+    },
+    {
+      "id": "retro",
+      "name": "Retro",
+      "nameZh": "复古",
+      "desc": "Sepia cream with rusty terracotta.",
+      "descZh": "旧照片般的米褐与陶土红。",
+      "tags": ["light", "warm", "retro"],
+      "light": { "bg": "#f8f1e3", "surface": "#fdf8ee", "surfaceAlt": "#f0e5cf", "text": "#3a2a17", "text2": "#7a6140", "text3": "#a48e6a", "border": "rgba(58,42,23,0.12)", "accent": "#c2410c", "accentText": "#ffffff", "accentHover": "#9a3412", "code": "#f1e8d4", "codeBanner": "#eaddc2", "sidebar": "#f2ead8", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#1a1309", "surface": "#231a0e", "surfaceAlt": "#2f2413", "text": "#f5ead5", "text2": "#bfa97e", "text3": "#8d7a57", "border": "rgba(245,234,213,0.10)", "accent": "#fb923c", "accentText": "#2a0d01", "accentHover": "#fdba74", "code": "#1e160b", "codeBanner": "#281d10", "sidebar": "#1c140a", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "nameZh": "终端",
+      "desc": "Green phosphor on a CRT black.",
+      "descZh": "CRT 黑底上的磷光绿。",
+      "tags": ["dark", "green", "terminal"],
+      "light": { "bg": "#f4f6f4", "surface": "#ffffff", "surfaceAlt": "#e7ece7", "text": "#152117", "text2": "#4c5e4f", "text3": "#7c8f7f", "border": "rgba(21,33,23,0.10)", "accent": "#16a34a", "accentText": "#ffffff", "accentHover": "#15803d", "code": "#e9efe9", "codeBanner": "#dfe8df", "sidebar": "#eaf0ea", "warn": "#b45309", "error": "#dc2626", "success": "#16a34a" },
+      "dark": { "bg": "#060d08", "surface": "#0b150d", "surfaceAlt": "#122112", "text": "#d3f5dc", "text2": "#7fbf8d", "text3": "#52835e", "border": "rgba(211,245,220,0.10)", "accent": "#22c55e", "accentText": "#02180a", "accentHover": "#4ade80", "code": "#081109", "codeBanner": "#0e1a10", "sidebar": "#081008", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" },
+      "shiki": {
+        "light": { "constant": "#0f766e", "string": "#15803d", "comment": "#6b7280", "keyword": "#b91c1c", "parameter": "#92400e", "function": "#1d4ed8", "punctuation": "#374151", "link": "#0369a1" },
+        "dark": { "constant": "#2dd4bf", "string": "#4ade80", "comment": "#6b7280", "keyword": "#fb7185", "parameter": "#fdba74", "function": "#60a5fa", "punctuation": "#9ca3af", "link": "#38bdf8" }
+      }
+    },
+    {
+      "id": "dune",
+      "name": "Dune",
+      "nameZh": "沙丘",
+      "desc": "Golden sand under a warm sun.",
+      "descZh": "暖阳下的金色沙丘。",
+      "tags": ["light", "warm", "sand"],
+      "light": { "bg": "#f7f3e8", "surface": "#fffcf4", "surfaceAlt": "#efe8d6", "text": "#2e2614", "text2": "#6b5e3c", "text3": "#988b64", "border": "rgba(46,38,20,0.10)", "accent": "#b45309", "accentText": "#ffffff", "accentHover": "#92400e", "code": "#f0ead8", "codeBanner": "#e9e1ca", "sidebar": "#f1ecdc", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#161208", "surface": "#1e190c", "surfaceAlt": "#2a2312", "text": "#f4ecd4", "text2": "#b6a776", "text3": "#857849", "border": "rgba(244,236,212,0.10)", "accent": "#d97706", "accentText": "#1f0d00", "accentHover": "#f59e0b", "code": "#1a1509", "codeBanner": "#231c0e", "sidebar": "#181307", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "nameZh": "冰川",
+      "desc": "Icy pale blues, sharp and clear.",
+      "descZh": "清澈锐利的冰蓝。",
+      "tags": ["light", "cool", "blue"],
+      "light": { "bg": "#eef6fc", "surface": "#ffffff", "surfaceAlt": "#e3f0f9", "text": "#0b2438", "text2": "#3d627e", "text3": "#6d8ba4", "border": "rgba(11,36,56,0.10)", "accent": "#0284c7", "accentText": "#ffffff", "accentHover": "#0369a1", "code": "#e2f0f9", "codeBanner": "#d9ebf6", "sidebar": "#e5f1fa", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#0a141d", "surface": "#101d29", "surfaceAlt": "#182838", "text": "#dff1fc", "text2": "#93b8d0", "text3": "#648096", "border": "rgba(223,241,252,0.10)", "accent": "#38bdf8", "accentText": "#04263a", "accentHover": "#7dd3fc", "code": "#0d1a24", "codeBanner": "#132230", "sidebar": "#0c1821", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "nebula",
+      "name": "Nebula",
+      "nameZh": "星云",
+      "desc": "Indigo clouds dotted with starlight.",
+      "descZh": "靛蓝星云，缀满星光。",
+      "tags": ["dark", "indigo", "purple"],
+      "light": { "bg": "#f1f1fb", "surface": "#ffffff", "surfaceAlt": "#e7e7f7", "text": "#1c1a3e", "text2": "#514f85", "text3": "#7d7bad", "border": "rgba(28,26,62,0.10)", "accent": "#6366f1", "accentText": "#ffffff", "accentHover": "#4f46e5", "code": "#e9e9f9", "codeBanner": "#e0e0f5", "sidebar": "#eaeaf8", "warn": "#b45309", "error": "#dc2626", "success": "#0d9488" },
+      "dark": { "bg": "#0c0b1d", "surface": "#131230", "surfaceAlt": "#1b1a3f", "text": "#e8e7ff", "text2": "#a5a3dc", "text3": "#716fa6", "border": "rgba(232,231,255,0.10)", "accent": "#818cf8", "accentText": "#151238", "accentHover": "#a5b4fc", "code": "#100f28", "codeBanner": "#161538", "sidebar": "#0e0d22", "warn": "#fbbf24", "error": "#fb7185", "success": "#2dd4bf" }
+    },
+    {
+      "id": "coral",
+      "name": "Coral",
+      "nameZh": "珊瑚",
+      "desc": "Reef corals, bright and lively.",
+      "descZh": "礁石珊瑚，明快而活泼。",
+      "tags": ["light", "warm", "orange"],
+      "light": { "bg": "#fdf2ef", "surface": "#ffffff", "surfaceAlt": "#f8e5e0", "text": "#331510", "text2": "#7a4a40", "text3": "#a5756a", "border": "rgba(51,21,16,0.10)", "accent": "#ea580c", "accentText": "#ffffff", "accentHover": "#c2410c", "code": "#f8e9e4", "codeBanner": "#f4ddd6", "sidebar": "#f9eae5", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#170d0d", "surface": "#201313", "surfaceAlt": "#2c1a1a", "text": "#fdeeed", "text2": "#d0a09b", "text3": "#9c6f6a", "border": "rgba(253,238,237,0.10)", "accent": "#fb7185", "accentText": "#2a0a12", "accentHover": "#fda4af", "code": "#1b1010", "codeBanner": "#251717", "sidebar": "#190f0f", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "steel",
+      "name": "Steel",
+      "nameZh": "钢铁",
+      "desc": "Cool blue-gray, industrial calm.",
+      "descZh": "冷冽的蓝灰，工业般的沉静。",
+      "tags": ["dark", "cool", "blue-gray"],
+      "light": { "bg": "#f0f3f6", "surface": "#ffffff", "surfaceAlt": "#e6ebef", "text": "#16202b", "text2": "#46586a", "text3": "#75879a", "border": "rgba(22,32,43,0.10)", "accent": "#0369a1", "accentText": "#ffffff", "accentHover": "#075985", "code": "#e8edf1", "codeBanner": "#dfe6ec", "sidebar": "#e8edf1", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#11161c", "surface": "#181f27", "surfaceAlt": "#212b36", "text": "#e3eaf1", "text2": "#9aabbd", "text3": "#6b7d8f", "border": "rgba(227,234,241,0.10)", "accent": "#38bdf8", "accentText": "#05283c", "accentHover": "#7dd3fc", "code": "#151c24", "codeBanner": "#1c252f", "sidebar": "#131920", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "autumn",
+      "name": "Autumn",
+      "nameZh": "秋日",
+      "desc": "Golden leaves on a harvest afternoon.",
+      "descZh": "丰收午后，满地金黄。",
+      "tags": ["light", "warm", "gold"],
+      "light": { "bg": "#fbf4e5", "surface": "#fffdf6", "surfaceAlt": "#f5e9d0", "text": "#33240f", "text2": "#6f5931", "text3": "#9d8859", "border": "rgba(51,36,15,0.10)", "accent": "#d97706", "accentText": "#ffffff", "accentHover": "#b45309", "code": "#f4ead6", "codeBanner": "#efe1c6", "sidebar": "#f5ecda", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#181105", "surface": "#211806", "surfaceAlt": "#2d210c", "text": "#f9eed3", "text2": "#c2a86b", "text3": "#8d7848", "border": "rgba(249,238,211,0.10)", "accent": "#f59e0b", "accentText": "#241300", "accentHover": "#fbbf24", "code": "#1c1405", "codeBanner": "#251a09", "sidebar": "#1a1205", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "matcha",
+      "name": "Matcha",
+      "nameZh": "抹茶",
+      "desc": "Mossy greens with a hint of tea.",
+      "descZh": "苔绿间透着茶香。",
+      "tags": ["light", "green", "warm"],
+      "light": { "bg": "#f5f8ec", "surface": "#ffffff", "surfaceAlt": "#ebf0dc", "text": "#232b12", "text2": "#5a6635", "text3": "#89935e", "border": "rgba(35,43,18,0.10)", "accent": "#65a30d", "accentText": "#ffffff", "accentHover": "#4d7c0f", "code": "#edf1df", "codeBanner": "#e5ebd1", "sidebar": "#eef2e2", "warn": "#a16207", "error": "#b91c1c", "success": "#15803d" },
+      "dark": { "bg": "#131606", "surface": "#1a1e09", "surfaceAlt": "#242a0e", "text": "#f1f5dc", "text2": "#b3c07c", "text3": "#818c52", "border": "rgba(241,245,220,0.10)", "accent": "#a3e635", "accentText": "#1a2202", "accentHover": "#bef264", "code": "#171a07", "codeBanner": "#1f240b", "sidebar": "#151806", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "knight",
+      "name": "Knight",
+      "nameZh": "骑士",
+      "desc": "Dark armor trimmed with old gold.",
+      "descZh": "暗色铠甲，缀以古金。",
+      "tags": ["dark", "gold", "neutral"],
+      "light": { "bg": "#f4f1ea", "surface": "#fdfbf6", "surfaceAlt": "#ebe5d8", "text": "#241f14", "text2": "#60573f", "text3": "#8e8468", "border": "rgba(36,31,20,0.10)", "accent": "#9a6b16", "accentText": "#ffffff", "accentHover": "#7c5610", "code": "#eee9dc", "codeBanner": "#e6dfcc", "sidebar": "#eee9dc", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#121110", "surface": "#1a1816", "surfaceAlt": "#242019", "text": "#f0e9d8", "text2": "#b8a97e", "text3": "#857855", "border": "rgba(240,233,216,0.10)", "accent": "#d4a72c", "accentText": "#1e1400", "accentHover": "#e3bd4f", "code": "#171512", "codeBanner": "#201d18", "sidebar": "#141311", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "pastel",
+      "name": "Pastel",
+      "nameZh": "粉彩",
+      "desc": "Soft candy colors, gentle and playful.",
+      "descZh": "糖果般的柔彩，轻柔俏皮。",
+      "tags": ["light", "pastel", "purple"],
+      "light": { "bg": "#faf7fd", "surface": "#ffffff", "surfaceAlt": "#f1ebf8", "text": "#2c2340", "text2": "#6d6288", "text3": "#9a8fb4", "border": "rgba(44,35,64,0.10)", "accent": "#a78bfa", "accentText": "#ffffff", "accentHover": "#8b5cf6", "code": "#f1ecf9", "codeBanner": "#eae2f5", "sidebar": "#f2eef9", "warn": "#b45309", "error": "#dc2626", "success": "#0d9488" },
+      "dark": { "bg": "#16121f", "surface": "#1d1829", "surfaceAlt": "#282038", "text": "#efeaff", "text2": "#b6a9d6", "text3": "#8478a0", "border": "rgba(239,234,255,0.10)", "accent": "#c4b5fd", "accentText": "#211640", "accentHover": "#ddd6fe", "code": "#1a1526", "codeBanner": "#221b30", "sidebar": "#181322", "warn": "#fbbf24", "error": "#fb7185", "success": "#2dd4bf" }
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender",
+      "nameZh": "薰衣草",
+      "desc": "A field of lavender in the morning light.",
+      "descZh": "晨光里的薰衣草田。",
+      "tags": ["light", "purple", "cool"],
+      "light": { "bg": "#f6f3fc", "surface": "#ffffff", "surfaceAlt": "#ece6f8", "text": "#241b3a", "text2": "#5b4f80", "text3": "#8578a8", "border": "rgba(36,27,58,0.10)", "accent": "#8b5cf6", "accentText": "#ffffff", "accentHover": "#7c3aed", "code": "#ece7f9", "codeBanner": "#e4dcf5", "sidebar": "#eee9fa", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#131024", "surface": "#1a1630", "surfaceAlt": "#231d40", "text": "#ede8ff", "text2": "#b0a5dc", "text3": "#7d73a6", "border": "rgba(237,232,255,0.10)", "accent": "#a78bfa", "accentText": "#1c1040", "accentHover": "#c4b5fd", "code": "#161228", "codeBanner": "#1d1835", "sidebar": "#151126", "warn": "#fbbf24", "error": "#fb7185", "success": "#4ade80" }
+    },
+    {
+      "id": "charcoal",
+      "name": "Charcoal",
+      "nameZh": "煤灰",
+      "desc": "Honest grays, no color to distract.",
+      "descZh": "诚实的灰，不打扰你的专注。",
+      "tags": ["neutral", "minimal", "gray"],
+      "light": { "bg": "#f4f4f4", "surface": "#ffffff", "surfaceAlt": "#e9e9e9", "text": "#181818", "text2": "#4d4d4d", "text3": "#7d7d7d", "border": "rgba(24,24,24,0.10)", "accent": "#333333", "accentText": "#ffffff", "accentHover": "#262626", "code": "#ebebeb", "codeBanner": "#e3e3e3", "sidebar": "#ebebeb", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#131313", "surface": "#1a1a1a", "surfaceAlt": "#232323", "text": "#e8e8e8", "text2": "#9e9e9e", "text3": "#6d6d6d", "border": "rgba(232,232,232,0.10)", "accent": "#d4d4d4", "accentText": "#131313", "accentHover": "#f0f0f0", "code": "#171717", "codeBanner": "#1f1f1f", "sidebar": "#151515", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "rose",
+      "name": "Rose",
+      "nameZh": "玫瑰",
+      "desc": "Deep maroon velvet with blush petals.",
+      "descZh": "深酒红的天鹅绒，缀着浅绯花瓣。",
+      "tags": ["dark", "pink", "maroon"],
+      "light": { "bg": "#fdf3f5", "surface": "#ffffff", "surfaceAlt": "#f9e7eb", "text": "#331421", "text2": "#7a4a5c", "text3": "#a57589", "border": "rgba(51,20,33,0.10)", "accent": "#be123c", "accentText": "#ffffff", "accentHover": "#9f1239", "code": "#f8e9ed", "codeBanner": "#f4dde4", "sidebar": "#f9ebee", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#190b12", "surface": "#221019", "surfaceAlt": "#2e1722", "text": "#fdecf2", "text2": "#d19ab0", "text3": "#9d6b82", "border": "rgba(253,236,242,0.10)", "accent": "#fb7185", "accentText": "#2a0a14", "accentHover": "#fda4af", "code": "#1d0e16", "codeBanner": "#271320", "sidebar": "#1b0d14", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "wave",
+      "name": "Wave",
+      "nameZh": "碧波",
+      "desc": "Teal water, clear and alive.",
+      "descZh": "青碧的水波，清澈灵动。",
+      "tags": ["light", "teal", "cool"],
+      "light": { "bg": "#edfaf7", "surface": "#ffffff", "surfaceAlt": "#e0f4ef", "text": "#0c2b26", "text2": "#3d645d", "text3": "#6d9189", "border": "rgba(12,43,38,0.10)", "accent": "#0d9488", "accentText": "#ffffff", "accentHover": "#0f766e", "code": "#e0f4ef", "codeBanner": "#d6efe8", "sidebar": "#e2f5f1", "warn": "#b45309", "error": "#dc2626", "success": "#15803d" },
+      "dark": { "bg": "#081412", "surface": "#0d1d1a", "surfaceAlt": "#142822", "text": "#ddf3ef", "text2": "#8dbfb5", "text3": "#5d8a81", "border": "rgba(221,243,239,0.10)", "accent": "#2dd4bf", "accentText": "#04201b", "accentHover": "#5eead4", "code": "#0a1815", "codeBanner": "#10211d", "sidebar": "#091613", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    },
+    {
+      "id": "mono",
+      "name": "Mono",
+      "nameZh": "极简",
+      "desc": "Strict monochrome, maximal focus.",
+      "descZh": "严格单色，极致专注。",
+      "tags": ["neutral", "minimal", "monochrome"],
+      "light": { "bg": "#ffffff", "surface": "#ffffff", "surfaceAlt": "#f2f2f2", "text": "#000000", "text2": "#555555", "text3": "#8c8c8c", "border": "rgba(0,0,0,0.12)", "accent": "#000000", "accentText": "#ffffff", "accentHover": "#333333", "code": "#f5f5f5", "codeBanner": "#ececec", "sidebar": "#f7f7f7", "warn": "#a16207", "error": "#b91c1c", "success": "#166534" },
+      "dark": { "bg": "#000000", "surface": "#0c0c0c", "surfaceAlt": "#161616", "text": "#ffffff", "text2": "#a1a1a1", "text3": "#6b6b6b", "border": "rgba(255,255,255,0.14)", "accent": "#ffffff", "accentText": "#000000", "accentHover": "#cccccc", "code": "#0a0a0a", "codeBanner": "#131313", "sidebar": "#050505", "warn": "#fbbf24", "error": "#f87171", "success": "#4ade80" }
+    }
+  ]
+}

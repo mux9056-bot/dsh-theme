@@ -1,0 +1,13 @@
+# dependencies / build output
+node_modules/
+*.tgz
+
+# macOS
+.DS_Store
+
+# editor
+.vscode/
+.idea/
+
+# logs
+*.log

@@ -1,0 +1,38 @@
+{
+  "name": "dsh-theme-pack",
+  "version": "1.0.0",
+  "description": "30-theme pack for the DeepSeek Harness web UI — a zero-dependency DSH client plugin plus drop-in CSS themes.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "files": [
+    "lib",
+    "themes",
+    "preview.html"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/build.mjs --verify-only"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "theme",
+    "plugin",
+    "cordis"
+  ],
+  "license": "MIT"
+}

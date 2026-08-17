@@ -1,0 +1,779 @@
+[
+  {
+    "id": "ocean",
+    "name": "Ocean",
+    "nameZh": "海洋",
+    "desc": "Cool blue seas and quiet depth.",
+    "descZh": "清凉的蓝，安静而深邃。",
+    "tags": [
+      "light",
+      "cool",
+      "blue"
+    ],
+    "swatch": {
+      "light": [
+        "#eef5fb",
+        "#ffffff",
+        "#0e7490",
+        "#0f2440"
+      ],
+      "dark": [
+        "#0b1722",
+        "#0f1f2d",
+        "#22d3ee",
+        "#e6f1f9"
+      ]
+    }
+  },
+  {
+    "id": "midnight",
+    "name": "Midnight",
+    "nameZh": "午夜",
+    "desc": "Deep navy with electric blue accents.",
+    "descZh": "深夜藏蓝，缀以电光蓝。",
+    "tags": [
+      "dark",
+      "cool",
+      "blue"
+    ],
+    "swatch": {
+      "light": [
+        "#f1f4f9",
+        "#ffffff",
+        "#2563eb",
+        "#0b1c33"
+      ],
+      "dark": [
+        "#070d1a",
+        "#0d1526",
+        "#3b82f6",
+        "#dbe7fb"
+      ]
+    }
+  },
+  {
+    "id": "aurora",
+    "name": "Aurora",
+    "nameZh": "极光",
+    "desc": "Violet skies melting into teal.",
+    "descZh": "紫罗兰与青碧交融的夜空。",
+    "tags": [
+      "dark",
+      "purple",
+      "teal"
+    ],
+    "swatch": {
+      "light": [
+        "#f2f4fb",
+        "#ffffff",
+        "#7c3aed",
+        "#221a3e"
+      ],
+      "dark": [
+        "#0e0a1f",
+        "#151031",
+        "#a78bfa",
+        "#ece7ff"
+      ]
+    }
+  },
+  {
+    "id": "lava",
+    "name": "Lava",
+    "nameZh": "熔岩",
+    "desc": "Charcoal rock with ember-orange fire.",
+    "descZh": "炭黑岩层，燃烧的橙红余烬。",
+    "tags": [
+      "dark",
+      "warm",
+      "orange"
+    ],
+    "swatch": {
+      "light": [
+        "#f7f2f0",
+        "#ffffff",
+        "#ea580c",
+        "#2b1712"
+      ],
+      "dark": [
+        "#150e0b",
+        "#1e1410",
+        "#f97316",
+        "#fdeee8"
+      ]
+    }
+  },
+  {
+    "id": "forest",
+    "name": "Forest",
+    "nameZh": "森林",
+    "desc": "Pine greens and soft moss.",
+    "descZh": "松绿与柔软的苔藓。",
+    "tags": [
+      "light",
+      "green"
+    ],
+    "swatch": {
+      "light": [
+        "#f0f6f0",
+        "#ffffff",
+        "#15803d",
+        "#14261a"
+      ],
+      "dark": [
+        "#0c150f",
+        "#122017",
+        "#4ade80",
+        "#e2f2e7"
+      ]
+    }
+  },
+  {
+    "id": "sakura",
+    "name": "Sakura",
+    "nameZh": "樱花",
+    "desc": "Blossom pinks on a pale spring sky.",
+    "descZh": "淡粉的春日，落樱如雨。",
+    "tags": [
+      "light",
+      "pink",
+      "warm"
+    ],
+    "swatch": {
+      "light": [
+        "#fff4f6",
+        "#ffffff",
+        "#db2777",
+        "#3d1420"
+      ],
+      "dark": [
+        "#1d0f16",
+        "#281420",
+        "#f472b6",
+        "#fdeef4"
+      ]
+    }
+  },
+  {
+    "id": "sunset",
+    "name": "Sunset",
+    "nameZh": "日落",
+    "desc": "Warm peach fading into dusk.",
+    "descZh": "暖桃色渐入黄昏。",
+    "tags": [
+      "light",
+      "warm",
+      "orange"
+    ],
+    "swatch": {
+      "light": [
+        "#fdf4ee",
+        "#ffffff",
+        "#ea580c",
+        "#331a10"
+      ],
+      "dark": [
+        "#180e10",
+        "#211316",
+        "#fb923c",
+        "#fdf0ec"
+      ]
+    }
+  },
+  {
+    "id": "graphite",
+    "name": "Graphite",
+    "nameZh": "石墨",
+    "desc": "Soft neutral gray, easy on the eyes.",
+    "descZh": "柔和的暖灰，护眼耐看。",
+    "tags": [
+      "neutral",
+      "minimal"
+    ],
+    "swatch": {
+      "light": [
+        "#f6f6f5",
+        "#ffffff",
+        "#3f3f3c",
+        "#1c1c1a"
+      ],
+      "dark": [
+        "#161614",
+        "#1d1d1a",
+        "#e4e4e0",
+        "#ececea"
+      ]
+    }
+  },
+  {
+    "id": "ink",
+    "name": "Ink",
+    "nameZh": "墨黑",
+    "desc": "Pure black and white, nothing more.",
+    "descZh": "纯粹的黑与白，至简。",
+    "tags": [
+      "dark",
+      "neutral",
+      "minimal"
+    ],
+    "swatch": {
+      "light": [
+        "#fafafa",
+        "#ffffff",
+        "#0a0a0a",
+        "#0a0a0a"
+      ],
+      "dark": [
+        "#0a0a0a",
+        "#111111",
+        "#ffffff",
+        "#f5f5f5"
+      ]
+    }
+  },
+  {
+    "id": "paper",
+    "name": "Paper",
+    "nameZh": "纸张",
+    "desc": "Warm cream like a well-read notebook.",
+    "descZh": "暖奶油色，像一本翻旧了的笔记本。",
+    "tags": [
+      "light",
+      "warm",
+      "cream"
+    ],
+    "swatch": {
+      "light": [
+        "#faf6ef",
+        "#fffdf8",
+        "#8a5a2b",
+        "#2f2417"
+      ],
+      "dark": [
+        "#171310",
+        "#1f1a15",
+        "#d4a15c",
+        "#f3ece1"
+      ]
+    }
+  },
+  {
+    "id": "amber",
+    "name": "Amber",
+    "nameZh": "琥珀",
+    "desc": "Golden honey light, warm and clear.",
+    "descZh": "蜂蜜般的金色，温暖透亮。",
+    "tags": [
+      "light",
+      "warm",
+      "amber"
+    ],
+    "swatch": {
+      "light": [
+        "#fff9e8",
+        "#fffdf5",
+        "#b45309",
+        "#33260e"
+      ],
+      "dark": [
+        "#171207",
+        "#201809",
+        "#f59e0b",
+        "#faf0d3"
+      ]
+    }
+  },
+  {
+    "id": "mint",
+    "name": "Mint",
+    "nameZh": "薄荷",
+    "desc": "Fresh green-teal, crisp and cool.",
+    "descZh": "清新的青绿，脆爽清凉。",
+    "tags": [
+      "light",
+      "green",
+      "teal"
+    ],
+    "swatch": {
+      "light": [
+        "#eff8f2",
+        "#ffffff",
+        "#059669",
+        "#0e2b1d"
+      ],
+      "dark": [
+        "#0a1611",
+        "#10221a",
+        "#34d399",
+        "#def3e8"
+      ]
+    }
+  },
+  {
+    "id": "violet",
+    "name": "Violet",
+    "nameZh": "紫罗兰",
+    "desc": "Soft lavender-purple with a regal accent.",
+    "descZh": "柔和的紫，带着一丝庄重。",
+    "tags": [
+      "light",
+      "purple"
+    ],
+    "swatch": {
+      "light": [
+        "#f6f2fd",
+        "#ffffff",
+        "#7c3aed",
+        "#241538"
+      ],
+      "dark": [
+        "#120b1e",
+        "#191031",
+        "#a78bfa",
+        "#efe8ff"
+      ]
+    }
+  },
+  {
+    "id": "cyber",
+    "name": "Cyber",
+    "nameZh": "赛博",
+    "desc": "Neon cyan on near-black circuit board.",
+    "descZh": "近黑底上的霓虹青，赛博电路板。",
+    "tags": [
+      "dark",
+      "neon",
+      "blue"
+    ],
+    "swatch": {
+      "light": [
+        "#eef6fb",
+        "#ffffff",
+        "#0891b2",
+        "#0c2438"
+      ],
+      "dark": [
+        "#070b14",
+        "#0d1422",
+        "#22d3ee",
+        "#dff2ff"
+      ]
+    }
+  },
+  {
+    "id": "retro",
+    "name": "Retro",
+    "nameZh": "复古",
+    "desc": "Sepia cream with rusty terracotta.",
+    "descZh": "旧照片般的米褐与陶土红。",
+    "tags": [
+      "light",
+      "warm",
+      "retro"
+    ],
+    "swatch": {
+      "light": [
+        "#f8f1e3",
+        "#fdf8ee",
+        "#c2410c",
+        "#3a2a17"
+      ],
+      "dark": [
+        "#1a1309",
+        "#231a0e",
+        "#fb923c",
+        "#f5ead5"
+      ]
+    }
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "nameZh": "终端",
+    "desc": "Green phosphor on a CRT black.",
+    "descZh": "CRT 黑底上的磷光绿。",
+    "tags": [
+      "dark",
+      "green",
+      "terminal"
+    ],
+    "swatch": {
+      "light": [
+        "#f4f6f4",
+        "#ffffff",
+        "#16a34a",
+        "#152117"
+      ],
+      "dark": [
+        "#060d08",
+        "#0b150d",
+        "#22c55e",
+        "#d3f5dc"
+      ]
+    }
+  },
+  {
+    "id": "dune",
+    "name": "Dune",
+    "nameZh": "沙丘",
+    "desc": "Golden sand under a warm sun.",
+    "descZh": "暖阳下的金色沙丘。",
+    "tags": [
+      "light",
+      "warm",
+      "sand"
+    ],
+    "swatch": {
+      "light": [
+        "#f7f3e8",
+        "#fffcf4",
+        "#b45309",
+        "#2e2614"
+      ],
+      "dark": [
+        "#161208",
+        "#1e190c",
+        "#d97706",
+        "#f4ecd4"
+      ]
+    }
+  },
+  {
+    "id": "glacier",
+    "name": "Glacier",
+    "nameZh": "冰川",
+    "desc": "Icy pale blues, sharp and clear.",
+    "descZh": "清澈锐利的冰蓝。",
+    "tags": [
+      "light",
+      "cool",
+      "blue"
+    ],
+    "swatch": {
+      "light": [
+        "#eef6fc",
+        "#ffffff",
+        "#0284c7",
+        "#0b2438"
+      ],
+      "dark": [
+        "#0a141d",
+        "#101d29",
+        "#38bdf8",
+        "#dff1fc"
+      ]
+    }
+  },
+  {
+    "id": "nebula",
+    "name": "Nebula",
+    "nameZh": "星云",
+    "desc": "Indigo clouds dotted with starlight.",
+    "descZh": "靛蓝星云，缀满星光。",
+    "tags": [
+      "dark",
+      "indigo",
+      "purple"
+    ],
+    "swatch": {
+      "light": [
+        "#f1f1fb",
+        "#ffffff",
+        "#6366f1",
+        "#1c1a3e"
+      ],
+      "dark": [
+        "#0c0b1d",
+        "#131230",
+        "#818cf8",
+        "#e8e7ff"
+      ]
+    }
+  },
+  {
+    "id": "coral",
+    "name": "Coral",
+    "nameZh": "珊瑚",
+    "desc": "Reef corals, bright and lively.",
+    "descZh": "礁石珊瑚，明快而活泼。",
+    "tags": [
+      "light",
+      "warm",
+      "orange"
+    ],
+    "swatch": {
+      "light": [
+        "#fdf2ef",
+        "#ffffff",
+        "#ea580c",
+        "#331510"
+      ],
+      "dark": [
+        "#170d0d",
+        "#201313",
+        "#fb7185",
+        "#fdeeed"
+      ]
+    }
+  },
+  {
+    "id": "steel",
+    "name": "Steel",
+    "nameZh": "钢铁",
+    "desc": "Cool blue-gray, industrial calm.",
+    "descZh": "冷冽的蓝灰，工业般的沉静。",
+    "tags": [
+      "dark",
+      "cool",
+      "blue-gray"
+    ],
+    "swatch": {
+      "light": [
+        "#f0f3f6",
+        "#ffffff",
+        "#0369a1",
+        "#16202b"
+      ],
+      "dark": [
+        "#11161c",
+        "#181f27",
+        "#38bdf8",
+        "#e3eaf1"
+      ]
+    }
+  },
+  {
+    "id": "autumn",
+    "name": "Autumn",
+    "nameZh": "秋日",
+    "desc": "Golden leaves on a harvest afternoon.",
+    "descZh": "丰收午后，满地金黄。",
+    "tags": [
+      "light",
+      "warm",
+      "gold"
+    ],
+    "swatch": {
+      "light": [
+        "#fbf4e5",
+        "#fffdf6",
+        "#d97706",
+        "#33240f"
+      ],
+      "dark": [
+        "#181105",
+        "#211806",
+        "#f59e0b",
+        "#f9eed3"
+      ]
+    }
+  },
+  {
+    "id": "matcha",
+    "name": "Matcha",
+    "nameZh": "抹茶",
+    "desc": "Mossy greens with a hint of tea.",
+    "descZh": "苔绿间透着茶香。",
+    "tags": [
+      "light",
+      "green",
+      "warm"
+    ],
+    "swatch": {
+      "light": [
+        "#f5f8ec",
+        "#ffffff",
+        "#65a30d",
+        "#232b12"
+      ],
+      "dark": [
+        "#131606",
+        "#1a1e09",
+        "#a3e635",
+        "#f1f5dc"
+      ]
+    }
+  },
+  {
+    "id": "knight",
+    "name": "Knight",
+    "nameZh": "骑士",
+    "desc": "Dark armor trimmed with old gold.",
+    "descZh": "暗色铠甲，缀以古金。",
+    "tags": [
+      "dark",
+      "gold",
+      "neutral"
+    ],
+    "swatch": {
+      "light": [
+        "#f4f1ea",
+        "#fdfbf6",
+        "#9a6b16",
+        "#241f14"
+      ],
+      "dark": [
+        "#121110",
+        "#1a1816",
+        "#d4a72c",
+        "#f0e9d8"
+      ]
+    }
+  },
+  {
+    "id": "pastel",
+    "name": "Pastel",
+    "nameZh": "粉彩",
+    "desc": "Soft candy colors, gentle and playful.",
+    "descZh": "糖果般的柔彩，轻柔俏皮。",
+    "tags": [
+      "light",
+      "pastel",
+      "purple"
+    ],
+    "swatch": {
+      "light": [
+        "#faf7fd",
+        "#ffffff",
+        "#a78bfa",
+        "#2c2340"
+      ],
+      "dark": [
+        "#16121f",
+        "#1d1829",
+        "#c4b5fd",
+        "#efeaff"
+      ]
+    }
+  },
+  {
+    "id": "lavender",
+    "name": "Lavender",
+    "nameZh": "薰衣草",
+    "desc": "A field of lavender in the morning light.",
+    "descZh": "晨光里的薰衣草田。",
+    "tags": [
+      "light",
+      "purple",
+      "cool"
+    ],
+    "swatch": {
+      "light": [
+        "#f6f3fc",
+        "#ffffff",
+        "#8b5cf6",
+        "#241b3a"
+      ],
+      "dark": [
+        "#131024",
+        "#1a1630",
+        "#a78bfa",
+        "#ede8ff"
+      ]
+    }
+  },
+  {
+    "id": "charcoal",
+    "name": "Charcoal",
+    "nameZh": "煤灰",
+    "desc": "Honest grays, no color to distract.",
+    "descZh": "诚实的灰，不打扰你的专注。",
+    "tags": [
+      "neutral",
+      "minimal",
+      "gray"
+    ],
+    "swatch": {
+      "light": [
+        "#f4f4f4",
+        "#ffffff",
+        "#333333",
+        "#181818"
+      ],
+      "dark": [
+        "#131313",
+        "#1a1a1a",
+        "#d4d4d4",
+        "#e8e8e8"
+      ]
+    }
+  },
+  {
+    "id": "rose",
+    "name": "Rose",
+    "nameZh": "玫瑰",
+    "desc": "Deep maroon velvet with blush petals.",
+    "descZh": "深酒红的天鹅绒，缀着浅绯花瓣。",
+    "tags": [
+      "dark",
+      "pink",
+      "maroon"
+    ],
+    "swatch": {
+      "light": [
+        "#fdf3f5",
+        "#ffffff",
+        "#be123c",
+        "#331421"
+      ],
+      "dark": [
+        "#190b12",
+        "#221019",
+        "#fb7185",
+        "#fdecf2"
+      ]
+    }
+  },
+  {
+    "id": "wave",
+    "name": "Wave",
+    "nameZh": "碧波",
+    "desc": "Teal water, clear and alive.",
+    "descZh": "青碧的水波，清澈灵动。",
+    "tags": [
+      "light",
+      "teal",
+      "cool"
+    ],
+    "swatch": {
+      "light": [
+        "#edfaf7",
+        "#ffffff",
+        "#0d9488",
+        "#0c2b26"
+      ],
+      "dark": [
+        "#081412",
+        "#0d1d1a",
+        "#2dd4bf",
+        "#ddf3ef"
+      ]
+    }
+  },
+  {
+    "id": "mono",
+    "name": "Mono",
+    "nameZh": "极简",
+    "desc": "Strict monochrome, maximal focus.",
+    "descZh": "严格单色，极致专注。",
+    "tags": [
+      "neutral",
+      "minimal",
+      "monochrome"
+    ],
+    "swatch": {
+      "light": [
+        "#ffffff",
+        "#ffffff",
+        "#000000",
+        "#000000"
+      ],
+      "dark": [
+        "#000000",
+        "#0c0c0c",
+        "#ffffff",
+        "#ffffff"
+      ]
+    }
+  }
+]
