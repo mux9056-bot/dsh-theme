@@ -1,10 +1,13 @@
 {
-  "name": "dsh-theme-pack",
+  "name": "dsh-theme",
   "version": "1.0.0",
   "description": "30-theme pack for the DeepSeek Harness web UI — a zero-dependency DSH client plugin plus drop-in CSS themes.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
     "./client": {
       "default": "./lib/client.js"
     },

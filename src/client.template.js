@@ -1,6 +1,6 @@
 /**
- * dsh-theme-pack — DeepSeek Harness client plugin (self-contained, zero deps)
- * ---------------------------------------------------------------------------
+ * dsh-theme — DeepSeek Harness client plugin (self-contained, zero deps)
+ * ----------------------------------------------------------------------
  * Packaging contract (mirrors @deepseek-ai/dsh-client-hmr):
  *   window.__ModuleLoader__.load({ id, factory })  with exports.inject = []
  *   and exports.apply(ctx). Declared via package.json:
@@ -8,16 +8,21 @@
  *
  * Features:
  *   • 30 themes, each with light + dark variants driven by body[data-ds-dark-theme]
- *   • floating palette button (bottom-right) → theme picker panel
- *   • Ctrl/Cmd+Shift+T toggles the panel, Esc closes it
+ *   • right-edge floating 🎨 button; click opens a slide-in swatch panel
+ *   • Ctrl/Cmd+Shift+T toggles the panel, Esc / click-outside closes it
  *   • selection + mode persisted in localStorage
- *   • ctx.provide("themePack", api) + window.dshThemePack for programmatic use
+ *   • ctx.provide("dshTheme", api) + window.dshTheme for programmatic use
  *
  * This file is a template: the build script inlines the generated theme data
  * at the THEME_DATA marker (in the const THEMES assignment below). Do not edit lib/client.js directly.
+ *
+ * Widget CSS lives in its own <style> element that is never rewritten; the
+ * active theme's CSS lives in a second <style> element (cleared when no theme
+ * is selected). Keeping them separate is what keeps the widget styled even
+ * when no theme is active.
  */
 window.__ModuleLoader__.load({
-  id: "dsh-theme-pack",
+  id: "dsh-theme",
   factory: (require) => {
     var module = { exports: {} };
     var exports = module.exports;
@@ -28,10 +33,13 @@ window.__ModuleLoader__.load({
     const THEMES = __THEME_DATA__;
 
     const ATTR = "data-dsh-theme";
-    const LS_THEME = "dsh-theme-pack:theme";
-    const LS_MODE = "dsh-theme-pack:mode";
+    const LS_THEME = "dsh-theme:theme";
+    const LS_MODE = "dsh-theme:mode";
+    const LS_LEGACY_THEME = "dsh-theme-pack:theme";
+    const LS_LEGACY_MODE = "dsh-theme-pack:mode";
 
-    let styleEl = null;
+    let widgetStyleEl = null;
+    let themeStyleEl = null;
     let rootEl = null;
     let panelEl = null;
     let active = null; // { id, name }
@@ -42,7 +50,18 @@ window.__ModuleLoader__.load({
 
     function getSaved() {
       try {
-        return { theme: localStorage.getItem(LS_THEME), mode: localStorage.getItem(LS_MODE) };
+        let theme = localStorage.getItem(LS_THEME) ?? localStorage.getItem(LS_LEGACY_THEME);
+        let m = localStorage.getItem(LS_MODE) ?? localStorage.getItem(LS_LEGACY_MODE);
+        // migrate legacy keys from the dsh-theme-pack era
+        if (localStorage.getItem(LS_LEGACY_THEME) !== null && localStorage.getItem(LS_THEME) === null && theme) {
+          localStorage.setItem(LS_THEME, theme);
+        }
+        if (localStorage.getItem(LS_LEGACY_MODE) !== null && localStorage.getItem(LS_MODE) === null && m) {
+          localStorage.setItem(LS_MODE, m);
+        }
+        localStorage.removeItem(LS_LEGACY_THEME);
+        localStorage.removeItem(LS_LEGACY_MODE);
+        return { theme, mode: m };
       } catch {
         return { theme: null, mode: null };
       }
@@ -52,13 +71,13 @@ window.__ModuleLoader__.load({
       active = THEMES.find((t) => t.id === id) || null;
       if (active) {
         document.body.setAttribute(ATTR, active.id);
-        styleEl.textContent = active.css;
+        themeStyleEl.textContent = active.css;
         try {
           localStorage.setItem(LS_THEME, active.id);
         } catch {}
       } else {
         document.body.removeAttribute(ATTR);
-        styleEl.textContent = "";
+        themeStyleEl.textContent = "";
         try {
           localStorage.removeItem(LS_THEME);
         } catch {}
@@ -81,70 +100,125 @@ window.__ModuleLoader__.load({
     /* ------------------------------ widget ------------------------------ */
 
     const WIDGET_CSS = `
-#dsh-theme-pack-fab{position:fixed;right:20px;bottom:20px;z-index:2147483000;width:44px;height:44px;
-  border:1px solid var(--dsw-alias-border-l2);border-radius:50%;cursor:pointer;display:grid;place-items:center;
-  background:var(--dsw-alias-bg-layer-2);box-shadow:var(--dsw-shadow-lv2);color:var(--dsw-alias-label-primary);
-  font-size:20px;transition:transform .15s var(--ds-ease-in-out),background .15s}
-#dsh-theme-pack-fab:hover{transform:scale(1.06);background:var(--dsw-alias-interactive-bg-hover)}
-#dsh-theme-pack-panel{position:fixed;right:20px;bottom:76px;z-index:2147483001;width:340px;max-height:min(560px,70vh);
-  display:none;flex-direction:column;box-sizing:border-box;padding:14px;gap:10px;overflow:hidden;
-  background:var(--dsw-alias-bg-layer-2);border:1px solid var(--dsw-alias-border-inverted);border-radius:16px;
-  box-shadow:var(--dsw-shadow-lv3)}
-#dsh-theme-pack-panel[data-open="true"]{display:flex}
-#dsh-theme-pack-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-#dsh-theme-pack-title{font-size:14px;font-weight:600;color:var(--dsw-alias-label-primary)}
-#dsh-theme-pack-modes{display:flex;gap:2px;padding:2px;border-radius:8px;background:var(--dsw-alias-bg-layer-3)}
-#dsh-theme-pack-modes button{border:none;background:transparent;cursor:pointer;font-size:12px;line-height:20px;
-  padding:2px 8px;border-radius:6px;color:var(--dsw-alias-label-secondary)}
-#dsh-theme-pack-modes button[data-on="true"]{background:var(--dsw-alias-bg-multi-select);
+#dsh-theme-root{position:fixed;inset:0;z-index:2147483000;pointer-events:none}
+#dsh-theme-fab{position:fixed;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;
+  box-sizing:border-box;border-radius:50%;border:1px solid var(--dsw-alias-border-l2);
+  background:var(--dsw-alias-bg-layer-2);box-shadow:0 6px 20px rgba(0,0,0,.16),0 0 0 0 rgba(0,0,0,0);
+  cursor:pointer;display:grid;place-items:center;font-size:20px;line-height:1;color:var(--dsw-alias-label-primary);
+  pointer-events:auto;user-select:none;transition:transform .28s cubic-bezier(.34,1.45,.64,1),background .2s,box-shadow .25s,opacity .3s}
+#dsh-theme-fab:hover{transform:translateY(-50%) scale(1.1);background:var(--dsw-alias-interactive-bg-hover);
+  box-shadow:0 10px 28px rgba(0,0,0,.22),0 0 0 4px var(--dsw-alias-interactive-bg-hover-accent)}
+#dsh-theme-fab[data-open="true"]{transform:translateY(-50%) scale(1.02)}
+#dsh-theme-fab[data-open="true"] .dsh-theme-fab-icon{transform:rotate(135deg)}
+.dsh-theme-fab-icon{transition:transform .3s cubic-bezier(.34,1.45,.64,1)}
+#dsh-theme-panel{position:fixed;right:64px;top:50%;width:372px;max-width:calc(100vw - 88px);
+  max-height:min(660px,82vh);box-sizing:border-box;padding:16px 16px 12px;display:flex;flex-direction:column;gap:12px;
+  background:var(--dsw-alias-bg-layer-2);border:1px solid var(--dsw-alias-border-l2);border-radius:18px;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);pointer-events:auto;
+  transform:translateY(-50%) translateX(24px) scale(.96);opacity:0;visibility:hidden;
+  transition:transform .3s cubic-bezier(.3,1.35,.55,1),opacity .22s ease,visibility .22s}
+#dsh-theme-panel[data-open="true"]{transform:translateY(-50%) translateX(0) scale(1);opacity:1;visibility:visible}
+#dsh-theme-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#dsh-theme-title{font-size:14px;font-weight:600;color:var(--dsw-alias-label-primary);display:flex;align-items:center;gap:6px}
+#dsh-theme-title .dsh-theme-count{font-size:11px;font-weight:400;color:var(--dsw-alias-label-tertiary)}
+#dsh-theme-close{border:none;background:transparent;cursor:pointer;color:var(--dsw-alias-label-tertiary);
+  font-size:15px;line-height:1;padding:4px;border-radius:6px;display:grid;place-items:center;transition:background .15s,color .15s}
+#dsh-theme-close:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}
+#dsh-theme-modes{display:flex;gap:2px;padding:2px;border-radius:9px;background:var(--dsw-alias-bg-layer-3)}
+#dsh-theme-modes button{border:none;background:transparent;cursor:pointer;font-size:12px;line-height:22px;
+  padding:2px 10px;border-radius:7px;color:var(--dsw-alias-label-secondary);transition:background .15s,color .15s}
+#dsh-theme-modes button:hover{color:var(--dsw-alias-label-primary)}
+#dsh-theme-modes button[data-on="true"]{background:var(--dsw-alias-bg-multi-select);
   color:var(--dsw-alias-label-primary);box-shadow:inset 0 0 0 1px var(--dsw-alias-border-l2)}
-#dsh-theme-pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;
-  padding-right:4px;min-height:0}
-#dsh-theme-pack-grid::-webkit-scrollbar{width:8px}
-#dsh-theme-pack-grid::-webkit-scrollbar-thumb{border-radius:4px;background:var(--dsh-scrollbar-thumb)}
-#dsh-theme-pack-grid::-webkit-scrollbar-thumb:hover{background:var(--dsh-scrollbar-thumb-hover)}
-#dsh-theme-pack-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:12px;
-  border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);cursor:pointer;color:inherit;font:inherit}
-#dsh-theme-pack-item:hover{background:var(--dsw-alias-interactive-bg-hover)}
-#dsh-theme-pack-item[data-on="true"]{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:1px}
-#dsh-theme-pack-chips{display:flex;gap:4px}
-#dsh-theme-pack-chips i{width:22px;height:14px;border-radius:4px;border:1px solid var(--dsw-alias-border-l2)}
-#dsh-theme-pack-name{font-size:11px;line-height:14px;color:var(--dsw-alias-label-secondary);text-align:center;
+#dsh-theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;min-height:0;padding:2px 4px 2px 2px}
+#dsh-theme-grid::-webkit-scrollbar{width:8px}
+#dsh-theme-grid::-webkit-scrollbar-thumb{border-radius:4px;background:var(--dsw-alias-scrollbar-bg-l1)}
+#dsh-theme-grid::-webkit-scrollbar-thumb:hover{background:var(--dsw-alias-scrollbar-hover-l1)}
+#dsh-theme-card{display:flex;flex-direction:column;gap:5px;padding:8px;border-radius:12px;cursor:pointer;
+  border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-alias-bg-layer-1);color:inherit;font:inherit;
+  text-align:left;transition:border-color .15s,background .15s,transform .12s}
+#dsh-theme-card:hover{background:var(--dsw-alias-interactive-bg-hover);border-color:var(--dsw-alias-border-l2);transform:translateY(-1px)}
+#dsh-theme-card[data-on="true"]{border-color:var(--dsw-alias-brand-primary);box-shadow:inset 0 0 0 1px var(--dsw-alias-brand-primary)}
+.dsh-theme-prev{position:relative;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--dsw-alias-border-l1)}
+.dsh-theme-prev .bar{position:absolute;inset:0;background:linear-gradient(120deg,var(--dt-bg) 0%,var(--dt-surface) 78%)}
+.dsh-theme-prev .bub{position:absolute;left:7px;top:50%;transform:translateY(-50%);width:52%;height:14px;border-radius:6px;
+  background:var(--dt-surface);box-shadow:0 1px 2px rgba(0,0,0,.14),inset 0 0 0 1px var(--dt-border)}
+.dsh-theme-prev .bub::after{content:"";position:absolute;right:4px;top:3px;width:26%;height:5px;border-radius:3px;background:var(--dt-text2)}
+.dsh-theme-prev .dot{position:absolute;right:7px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;
+  background:var(--dt-accent);box-shadow:0 0 0 2px color-mix(in srgb, var(--dt-surface) 80%, transparent)}
+.dsh-theme-prev .chips{position:absolute;left:7px;bottom:4px;display:flex;gap:3px}
+.dsh-theme-prev .chips i{width:12px;height:6px;border-radius:2px;display:block}
+#dsh-theme-card[data-on="true"] .dsh-theme-check{position:absolute;right:4px;top:4px;width:16px;height:16px;border-radius:50%;
+  background:var(--dsw-alias-brand-primary);color:var(--dsw-alias-label-primary-foreground);display:grid;place-items:center;
+  font-size:10px;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.25);z-index:1}
+.dsh-theme-check{display:none}
+#dsh-theme-card[data-on="true"] .dsh-theme-check{display:grid}
+.dsh-theme-nm{font-size:11px;line-height:14px;color:var(--dsw-alias-label-secondary);text-align:center;
   max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#dsh-theme-pack-item[data-on="true"] #dsh-theme-pack-name{color:var(--dsw-alias-label-primary)}
-#dsh-theme-pack-foot{font-size:11px;color:var(--dsw-alias-label-tertiary)}
+#dsh-theme-card[data-on="true"] .dsh-theme-nm{color:var(--dsw-alias-label-primary);font-weight:600}
+#dsh-theme-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:2px}
+#dsh-theme-hint{font-size:11px;color:var(--dsw-alias-label-tertiary)}
+#dsh-theme-reset{border:none;background:transparent;cursor:pointer;font-size:11px;color:var(--dsw-alias-label-tertiary);
+  padding:2px 8px;border-radius:6px;transition:background .15s,color .15s}
+#dsh-theme-reset:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}
 `;
 
     function mountWidget() {
       if (mounted) return;
       mounted = true;
-      styleEl = document.createElement("style");
-      styleEl.id = "dsh-theme-pack-style";
-      document.head.appendChild(styleEl);
-      styleEl.textContent = WIDGET_CSS;
+
+      // widget styles — never rewritten after mount
+      widgetStyleEl = document.createElement("style");
+      widgetStyleEl.id = "dsh-theme-style";
+      widgetStyleEl.dataset.plugin = "dsh-theme";
+      widgetStyleEl.textContent = WIDGET_CSS;
+      document.head.appendChild(widgetStyleEl);
+
+      // active-theme styles — swapped on applyTheme()
+      themeStyleEl = document.createElement("style");
+      themeStyleEl.id = "dsh-theme-active-style";
+      document.head.appendChild(themeStyleEl);
 
       rootEl = document.createElement("div");
-      rootEl.id = "dsh-theme-pack-root";
+      rootEl.id = "dsh-theme-root";
 
       const fab = document.createElement("button");
-      fab.id = "dsh-theme-pack-fab";
+      fab.id = "dsh-theme-fab";
+      fab.type = "button";
       fab.title = zh() ? "切换主题 (Ctrl+Shift+T)" : "Switch theme (Ctrl+Shift+T)";
-      fab.textContent = "🎨";
+      fab.setAttribute("aria-label", fab.title);
+      const icon = document.createElement("span");
+      icon.className = "dsh-theme-fab-icon";
+      icon.textContent = "🎨";
+      fab.appendChild(icon);
       fab.addEventListener("click", togglePanel);
 
       panelEl = document.createElement("div");
-      panelEl.id = "dsh-theme-pack-panel";
+      panelEl.id = "dsh-theme-panel";
       panelEl.setAttribute("data-open", "false");
 
       const head = document.createElement("div");
-      head.id = "dsh-theme-pack-head";
+      head.id = "dsh-theme-head";
       const title = document.createElement("div");
-      title.id = "dsh-theme-pack-title";
-      title.textContent = zh() ? "主题包 · " + THEMES.length + " 款" : "Theme Pack · " + THEMES.length;
+      title.id = "dsh-theme-title";
+      title.textContent = zh() ? "主题" : "Themes";
+      const count = document.createElement("span");
+      count.className = "dsh-theme-count";
+      count.textContent = THEMES.length + " 款";
+      title.appendChild(count);
+      const close = document.createElement("button");
+      close.id = "dsh-theme-close";
+      close.type = "button";
+      close.textContent = "✕";
+      close.title = zh() ? "关闭 (Esc)" : "Close (Esc)";
+      close.addEventListener("click", () => setPanelOpen(false));
+      head.append(title, close);
+
       const modes = document.createElement("div");
-      modes.id = "dsh-theme-pack-modes";
+      modes.id = "dsh-theme-modes";
       const mk = (key, label) => {
         const b = document.createElement("button");
+        b.type = "button";
         b.textContent = label;
         b.dataset.key = key;
         b.addEventListener("click", () => applyMode(key));
@@ -154,54 +228,92 @@ window.__ModuleLoader__.load({
       mk("system", zh() ? "自动" : "Auto");
       mk("light", zh() ? "浅色" : "Light");
       mk("dark", zh() ? "深色" : "Dark");
-      head.append(title, modes);
 
       const grid = document.createElement("div");
-      grid.id = "dsh-theme-pack-grid";
+      grid.id = "dsh-theme-grid";
       for (const t of THEMES) {
+        const [bg, surface, accent, text] = t.swatch.light;
+        const [, , , textDark] = t.swatch.dark;
         const item = document.createElement("button");
-        item.id = "dsh-theme-pack-item";
+        item.id = "dsh-theme-card";
+        item.type = "button";
         item.dataset.id = t.id;
-        const chips = document.createElement("div");
-        chips.id = "dsh-theme-pack-chips";
-        const mkChip = (bg, fg) => {
+        item.title = `${t.nameZh} · ${t.name}`;
+        item.style.setProperty("--dt-bg", bg);
+        item.style.setProperty("--dt-surface", surface);
+        item.style.setProperty("--dt-accent", accent);
+        item.style.setProperty("--dt-text2", text);
+        item.style.setProperty("--dt-border", textDark);
+
+        const prev = document.createElement("span");
+        prev.className = "dsh-theme-prev";
+        const bar = document.createElement("span");
+        bar.className = "bar";
+        const bub = document.createElement("span");
+        bub.className = "bub";
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        const chips = document.createElement("span");
+        chips.className = "chips";
+        for (const c of [bg, surface, accent]) {
           const i = document.createElement("i");
-          i.style.background = bg;
-          i.style.borderColor = fg;
-          return i;
-        };
-        chips.append(mkChip(t.swatch.light[0], t.swatch.light[3]), mkChip(t.swatch.dark[0], t.swatch.dark[3]));
+          i.style.background = c;
+          chips.appendChild(i);
+        }
+        const check = document.createElement("span");
+        check.className = "dsh-theme-check";
+        check.textContent = "✓";
+        prev.append(bar, bub, dot, chips, check);
+
         const name = document.createElement("div");
-        name.id = "dsh-theme-pack-name";
+        name.className = "dsh-theme-nm";
         name.textContent = zh() ? t.nameZh : t.name;
-        item.append(chips, name);
+        item.append(prev, name);
         item.addEventListener("click", () => applyTheme(t.id));
         grid.appendChild(item);
       }
 
       const foot = document.createElement("div");
-      foot.id = "dsh-theme-pack-foot";
-      foot.textContent = zh() ? "Ctrl+Shift+T 呼出 · 选择即持久化" : "Ctrl+Shift+T to open · selection is saved";
-      panelEl.append(head, grid, foot);
+      foot.id = "dsh-theme-foot";
+      const hint = document.createElement("span");
+      hint.id = "dsh-theme-hint";
+      hint.textContent = zh() ? "Ctrl+Shift+T · 选择即保存" : "Ctrl+Shift+T · saved automatically";
+      const reset = document.createElement("button");
+      reset.id = "dsh-theme-reset";
+      reset.type = "button";
+      reset.textContent = zh() ? "恢复默认" : "Reset";
+      reset.addEventListener("click", () => applyTheme(null));
+      foot.append(hint, reset);
 
+      panelEl.append(head, modes, grid, foot);
       rootEl.append(fab, panelEl);
       document.body.appendChild(rootEl);
     }
 
     function syncPanel() {
       if (!panelEl) return;
-      for (const b of panelEl.querySelectorAll("#dsh-theme-pack-modes button")) {
+      for (const b of panelEl.querySelectorAll("#dsh-theme-modes button")) {
         b.dataset.on = String(b.dataset.key === mode);
       }
-      for (const item of panelEl.querySelectorAll("#dsh-theme-pack-item")) {
+      for (const item of panelEl.querySelectorAll("#dsh-theme-card")) {
         item.dataset.on = String(active && item.dataset.id === active.id);
       }
+      fabOpenState();
+    }
+
+    function setPanelOpen(open) {
+      if (!panelEl) return;
+      panelEl.setAttribute("data-open", String(open));
+      syncPanel();
     }
 
     function togglePanel() {
-      const open = panelEl.getAttribute("data-open") !== "true";
-      panelEl.setAttribute("data-open", String(open));
-      syncPanel();
+      setPanelOpen(panelEl.getAttribute("data-open") !== "true");
+    }
+
+    function fabOpenState() {
+      const fab = document.getElementById("dsh-theme-fab");
+      if (fab) fab.dataset.open = String(panelEl?.getAttribute("data-open") === "true");
     }
 
     function onKey(e) {
@@ -209,7 +321,13 @@ window.__ModuleLoader__.load({
         e.preventDefault();
         togglePanel();
       } else if (e.key === "Escape" && panelEl && panelEl.getAttribute("data-open") === "true") {
-        panelEl.setAttribute("data-open", "false");
+        setPanelOpen(false);
+      }
+    }
+
+    function onDocClick(e) {
+      if (panelEl && panelEl.getAttribute("data-open") === "true" && rootEl && !rootEl.contains(e.target)) {
+        setPanelOpen(false);
       }
     }
 
@@ -224,6 +342,7 @@ window.__ModuleLoader__.load({
       applyTheme(saved.theme || null);
 
       window.addEventListener("keydown", onKey);
+      document.addEventListener("click", onDocClick);
 
       // avoid double-mounting on HMR re-apply
       if (rootEl && !rootEl.isConnected) document.body.appendChild(rootEl);
@@ -245,18 +364,22 @@ window.__ModuleLoader__.load({
         getMode: () => mode,
       };
 
+      window.dshTheme = api;
+      // backward-compat alias from the dsh-theme-pack era
       window.dshThemePack = api;
       if (ctx && typeof ctx.provide === "function") {
         try {
-          ctx.provide("themePack", api);
+          ctx.provide("dshTheme", api);
         } catch {}
       }
       if (ctx && typeof ctx.on === "function") {
         try {
           ctx.on("dispose", () => {
             window.removeEventListener("keydown", onKey);
+            document.removeEventListener("click", onDocClick);
             rootEl?.remove();
-            styleEl?.remove();
+            widgetStyleEl?.remove();
+            themeStyleEl?.remove();
             mounted = false;
           });
         } catch {}

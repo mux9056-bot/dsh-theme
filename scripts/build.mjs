@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * dsh-theme-pack build script
+ * dsh-theme build script
  * ---------------------------------
  * 1. Reads src/themes.json (30 themes, each with light/dark semantic slots)
  * 2. Maps slots -> real DSH CSS custom properties (--dsw-alias-* / --dsw-specific-* / --shiki-* / --dsw-linear-*)
@@ -212,7 +212,7 @@ function themeCss(t) {
       .map(([k, v]) => `  ${k}: ${v};`)
       .join("\n")}\n}`;
   return (
-    `/* ${t.name} (${t.nameZh}) — dsh-theme-pack */\n` +
+    `/* ${t.name} (${t.nameZh}) — dsh-theme */\n` +
     block(`body[data-dsh-theme="${t.id}"]`, light) +
     "\n" +
     block(`body[data-dsh-theme="${t.id}"][data-ds-dark-theme]`, dark) +
@@ -328,7 +328,7 @@ function buildPreviewHtml(themes, manifest) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>dsh-theme-pack · 30 主题预览</title>
+<title>dsh-theme · 30 主题预览</title>
 <style>
   :root{color-scheme:light dark}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
@@ -378,7 +378,7 @@ function buildPreviewHtml(themes, manifest) {
 </head>
 <body data-dsh-theme="${themes[0].id}">
 <header>
-  <h1>🎨 dsh-theme-pack — DeepSeek Harness 30 主题</h1>
+  <h1>🎨 dsh-theme — DeepSeek Harness 30 主题</h1>
   <p class="sub">点击卡片预览；浅色/深色即时切换。所有主题均直接映射 DSH 官方 CSS 变量（--dsw-alias-* / --dsw-specific-* / --shiki-*）。</p>
 </header>
 <div class="bar">

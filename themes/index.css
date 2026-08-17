@@ -1,5 +1,5 @@
 /* ===== ocean · Ocean (海洋) ===== */
-/* Ocean (海洋) — dsh-theme-pack */
+/* Ocean (海洋) — dsh-theme */
 body[data-dsh-theme="ocean"]{
   --dsw-alias-bg-base: #eef5fb;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -198,7 +198,7 @@ body[data-dsh-theme="ocean"][data-ds-dark-theme]{
 }
 
 /* ===== midnight · Midnight (午夜) ===== */
-/* Midnight (午夜) — dsh-theme-pack */
+/* Midnight (午夜) — dsh-theme */
 body[data-dsh-theme="midnight"]{
   --dsw-alias-bg-base: #f1f4f9;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -397,7 +397,7 @@ body[data-dsh-theme="midnight"][data-ds-dark-theme]{
 }
 
 /* ===== aurora · Aurora (极光) ===== */
-/* Aurora (极光) — dsh-theme-pack */
+/* Aurora (极光) — dsh-theme */
 body[data-dsh-theme="aurora"]{
   --dsw-alias-bg-base: #f2f4fb;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -596,7 +596,7 @@ body[data-dsh-theme="aurora"][data-ds-dark-theme]{
 }
 
 /* ===== lava · Lava (熔岩) ===== */
-/* Lava (熔岩) — dsh-theme-pack */
+/* Lava (熔岩) — dsh-theme */
 body[data-dsh-theme="lava"]{
   --dsw-alias-bg-base: #f7f2f0;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -795,7 +795,7 @@ body[data-dsh-theme="lava"][data-ds-dark-theme]{
 }
 
 /* ===== forest · Forest (森林) ===== */
-/* Forest (森林) — dsh-theme-pack */
+/* Forest (森林) — dsh-theme */
 body[data-dsh-theme="forest"]{
   --dsw-alias-bg-base: #f0f6f0;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -994,7 +994,7 @@ body[data-dsh-theme="forest"][data-ds-dark-theme]{
 }
 
 /* ===== sakura · Sakura (樱花) ===== */
-/* Sakura (樱花) — dsh-theme-pack */
+/* Sakura (樱花) — dsh-theme */
 body[data-dsh-theme="sakura"]{
   --dsw-alias-bg-base: #fff4f6;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -1193,7 +1193,7 @@ body[data-dsh-theme="sakura"][data-ds-dark-theme]{
 }
 
 /* ===== sunset · Sunset (日落) ===== */
-/* Sunset (日落) — dsh-theme-pack */
+/* Sunset (日落) — dsh-theme */
 body[data-dsh-theme="sunset"]{
   --dsw-alias-bg-base: #fdf4ee;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -1392,7 +1392,7 @@ body[data-dsh-theme="sunset"][data-ds-dark-theme]{
 }
 
 /* ===== graphite · Graphite (石墨) ===== */
-/* Graphite (石墨) — dsh-theme-pack */
+/* Graphite (石墨) — dsh-theme */
 body[data-dsh-theme="graphite"]{
   --dsw-alias-bg-base: #f6f6f5;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -1591,7 +1591,7 @@ body[data-dsh-theme="graphite"][data-ds-dark-theme]{
 }
 
 /* ===== ink · Ink (墨黑) ===== */
-/* Ink (墨黑) — dsh-theme-pack */
+/* Ink (墨黑) — dsh-theme */
 body[data-dsh-theme="ink"]{
   --dsw-alias-bg-base: #fafafa;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -1790,7 +1790,7 @@ body[data-dsh-theme="ink"][data-ds-dark-theme]{
 }
 
 /* ===== paper · Paper (纸张) ===== */
-/* Paper (纸张) — dsh-theme-pack */
+/* Paper (纸张) — dsh-theme */
 body[data-dsh-theme="paper"]{
   --dsw-alias-bg-base: #faf6ef;
   --dsw-alias-bg-layer-1: #fffdf8;
@@ -1989,7 +1989,7 @@ body[data-dsh-theme="paper"][data-ds-dark-theme]{
 }
 
 /* ===== amber · Amber (琥珀) ===== */
-/* Amber (琥珀) — dsh-theme-pack */
+/* Amber (琥珀) — dsh-theme */
 body[data-dsh-theme="amber"]{
   --dsw-alias-bg-base: #fff9e8;
   --dsw-alias-bg-layer-1: #fffdf5;
@@ -2188,7 +2188,7 @@ body[data-dsh-theme="amber"][data-ds-dark-theme]{
 }
 
 /* ===== mint · Mint (薄荷) ===== */
-/* Mint (薄荷) — dsh-theme-pack */
+/* Mint (薄荷) — dsh-theme */
 body[data-dsh-theme="mint"]{
   --dsw-alias-bg-base: #eff8f2;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -2387,7 +2387,7 @@ body[data-dsh-theme="mint"][data-ds-dark-theme]{
 }
 
 /* ===== violet · Violet (紫罗兰) ===== */
-/* Violet (紫罗兰) — dsh-theme-pack */
+/* Violet (紫罗兰) — dsh-theme */
 body[data-dsh-theme="violet"]{
   --dsw-alias-bg-base: #f6f2fd;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -2586,7 +2586,7 @@ body[data-dsh-theme="violet"][data-ds-dark-theme]{
 }
 
 /* ===== cyber · Cyber (赛博) ===== */
-/* Cyber (赛博) — dsh-theme-pack */
+/* Cyber (赛博) — dsh-theme */
 body[data-dsh-theme="cyber"]{
   --dsw-alias-bg-base: #eef6fb;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -2785,7 +2785,7 @@ body[data-dsh-theme="cyber"][data-ds-dark-theme]{
 }
 
 /* ===== retro · Retro (复古) ===== */
-/* Retro (复古) — dsh-theme-pack */
+/* Retro (复古) — dsh-theme */
 body[data-dsh-theme="retro"]{
   --dsw-alias-bg-base: #f8f1e3;
   --dsw-alias-bg-layer-1: #fdf8ee;
@@ -2984,7 +2984,7 @@ body[data-dsh-theme="retro"][data-ds-dark-theme]{
 }
 
 /* ===== terminal · Terminal (终端) ===== */
-/* Terminal (终端) — dsh-theme-pack */
+/* Terminal (终端) — dsh-theme */
 body[data-dsh-theme="terminal"]{
   --dsw-alias-bg-base: #f4f6f4;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -3183,7 +3183,7 @@ body[data-dsh-theme="terminal"][data-ds-dark-theme]{
 }
 
 /* ===== dune · Dune (沙丘) ===== */
-/* Dune (沙丘) — dsh-theme-pack */
+/* Dune (沙丘) — dsh-theme */
 body[data-dsh-theme="dune"]{
   --dsw-alias-bg-base: #f7f3e8;
   --dsw-alias-bg-layer-1: #fffcf4;
@@ -3382,7 +3382,7 @@ body[data-dsh-theme="dune"][data-ds-dark-theme]{
 }
 
 /* ===== glacier · Glacier (冰川) ===== */
-/* Glacier (冰川) — dsh-theme-pack */
+/* Glacier (冰川) — dsh-theme */
 body[data-dsh-theme="glacier"]{
   --dsw-alias-bg-base: #eef6fc;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -3581,7 +3581,7 @@ body[data-dsh-theme="glacier"][data-ds-dark-theme]{
 }
 
 /* ===== nebula · Nebula (星云) ===== */
-/* Nebula (星云) — dsh-theme-pack */
+/* Nebula (星云) — dsh-theme */
 body[data-dsh-theme="nebula"]{
   --dsw-alias-bg-base: #f1f1fb;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -3780,7 +3780,7 @@ body[data-dsh-theme="nebula"][data-ds-dark-theme]{
 }
 
 /* ===== coral · Coral (珊瑚) ===== */
-/* Coral (珊瑚) — dsh-theme-pack */
+/* Coral (珊瑚) — dsh-theme */
 body[data-dsh-theme="coral"]{
   --dsw-alias-bg-base: #fdf2ef;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -3979,7 +3979,7 @@ body[data-dsh-theme="coral"][data-ds-dark-theme]{
 }
 
 /* ===== steel · Steel (钢铁) ===== */
-/* Steel (钢铁) — dsh-theme-pack */
+/* Steel (钢铁) — dsh-theme */
 body[data-dsh-theme="steel"]{
   --dsw-alias-bg-base: #f0f3f6;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -4178,7 +4178,7 @@ body[data-dsh-theme="steel"][data-ds-dark-theme]{
 }
 
 /* ===== autumn · Autumn (秋日) ===== */
-/* Autumn (秋日) — dsh-theme-pack */
+/* Autumn (秋日) — dsh-theme */
 body[data-dsh-theme="autumn"]{
   --dsw-alias-bg-base: #fbf4e5;
   --dsw-alias-bg-layer-1: #fffdf6;
@@ -4377,7 +4377,7 @@ body[data-dsh-theme="autumn"][data-ds-dark-theme]{
 }
 
 /* ===== matcha · Matcha (抹茶) ===== */
-/* Matcha (抹茶) — dsh-theme-pack */
+/* Matcha (抹茶) — dsh-theme */
 body[data-dsh-theme="matcha"]{
   --dsw-alias-bg-base: #f5f8ec;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -4576,7 +4576,7 @@ body[data-dsh-theme="matcha"][data-ds-dark-theme]{
 }
 
 /* ===== knight · Knight (骑士) ===== */
-/* Knight (骑士) — dsh-theme-pack */
+/* Knight (骑士) — dsh-theme */
 body[data-dsh-theme="knight"]{
   --dsw-alias-bg-base: #f4f1ea;
   --dsw-alias-bg-layer-1: #fdfbf6;
@@ -4775,7 +4775,7 @@ body[data-dsh-theme="knight"][data-ds-dark-theme]{
 }
 
 /* ===== pastel · Pastel (粉彩) ===== */
-/* Pastel (粉彩) — dsh-theme-pack */
+/* Pastel (粉彩) — dsh-theme */
 body[data-dsh-theme="pastel"]{
   --dsw-alias-bg-base: #faf7fd;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -4974,7 +4974,7 @@ body[data-dsh-theme="pastel"][data-ds-dark-theme]{
 }
 
 /* ===== lavender · Lavender (薰衣草) ===== */
-/* Lavender (薰衣草) — dsh-theme-pack */
+/* Lavender (薰衣草) — dsh-theme */
 body[data-dsh-theme="lavender"]{
   --dsw-alias-bg-base: #f6f3fc;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -5173,7 +5173,7 @@ body[data-dsh-theme="lavender"][data-ds-dark-theme]{
 }
 
 /* ===== charcoal · Charcoal (煤灰) ===== */
-/* Charcoal (煤灰) — dsh-theme-pack */
+/* Charcoal (煤灰) — dsh-theme */
 body[data-dsh-theme="charcoal"]{
   --dsw-alias-bg-base: #f4f4f4;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -5372,7 +5372,7 @@ body[data-dsh-theme="charcoal"][data-ds-dark-theme]{
 }
 
 /* ===== rose · Rose (玫瑰) ===== */
-/* Rose (玫瑰) — dsh-theme-pack */
+/* Rose (玫瑰) — dsh-theme */
 body[data-dsh-theme="rose"]{
   --dsw-alias-bg-base: #fdf3f5;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -5571,7 +5571,7 @@ body[data-dsh-theme="rose"][data-ds-dark-theme]{
 }
 
 /* ===== wave · Wave (碧波) ===== */
-/* Wave (碧波) — dsh-theme-pack */
+/* Wave (碧波) — dsh-theme */
 body[data-dsh-theme="wave"]{
   --dsw-alias-bg-base: #edfaf7;
   --dsw-alias-bg-layer-1: #ffffff;
@@ -5770,7 +5770,7 @@ body[data-dsh-theme="wave"][data-ds-dark-theme]{
 }
 
 /* ===== mono · Mono (极简) ===== */
-/* Mono (极简) — dsh-theme-pack */
+/* Mono (极简) — dsh-theme */
 body[data-dsh-theme="mono"]{
   --dsw-alias-bg-base: #ffffff;
   --dsw-alias-bg-layer-1: #ffffff;

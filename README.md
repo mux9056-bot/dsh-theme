@@ -1,4 +1,4 @@
-# 🎨 dsh-theme-pack
+# 🎨 dsh-theme
 
 **DeepSeek Harness 主题插件 · 30 款即插即用主题**
 
@@ -12,7 +12,7 @@
 | 主题数量 | 30（每个含 light + dark 双变体，共 60 套配色） |
 | 接入方式 | npm 包安装 / 本地路径 / 纯 CSS 三选一 |
 | 交互 | 右下角 🎨 悬浮按钮、`Ctrl/⌘+Shift+T` 呼出、`Esc` 关闭 |
-| 持久化 | `localStorage`（`dsh-theme-pack:theme` / `dsh-theme-pack:mode`） |
+| 持久化 | `localStorage`（`dsh-theme:theme` / `dsh-theme:mode`） |
 
 ---
 
@@ -58,7 +58,7 @@
 ## 目录结构
 
 ```
-dsh-theme-pack/
+dsh-theme/
 ├── package.json            # DSH 插件清单：dsh.client { inject:[], platform:"web", immediately:true }
 ├── README.md
 ├── preview.html            # 构建生成：30 主题自包含预览页（file:// 直接打开）
@@ -102,7 +102,7 @@ DSH 的 web profile 通过 `dsh plugin`（内部转发 pnpm）管理树外插件
 
 ```bash
 # 在 DSH web profile 目录下（$DSH_HOME/profiles/web）
-dsh plugin --profile web add /absolute/path/to/dsh-theme-pack
+dsh plugin --profile web add /absolute/path/to/dsh-theme
 ```
 
 **② 或先构建再以 npm 包方式安装：**
@@ -110,8 +110,8 @@ dsh plugin --profile web add /absolute/path/to/dsh-theme-pack
 ```bash
 npm run build
 # 发布或使用本地 tarball
-npm pack            # 生成 dsh-theme-pack-1.0.0.tgz
-dsh plugin --profile web add ./dsh-theme-pack-1.0.0.tgz
+npm pack            # 生成 dsh-theme-1.0.0.tgz
+dsh plugin --profile web add ./dsh-theme-1.0.0.tgz
 ```
 
 安装后重启 web profile，右下角出现 🎨 悬浮按钮即可换肤。
@@ -160,17 +160,17 @@ document.body.setAttribute("data-dsh-theme", "ocean");
 | 快捷键 | `Ctrl/⌘ + Shift + T` 呼出面板，`Esc` 关闭 |
 | 浅/深/自动 | 面板顶部三态切换；「自动」跟随 DSH 内置外观设置 |
 | 持久化 | 选择写入 `localStorage`，刷新/重启后自动恢复 |
-| 程序化 API | `window.dshThemePack`（见下） |
+| 程序化 API | `window.dshTheme`（见下） |
 | 服务注入 | `ctx.provide("themePack", api)`，其他插件可 `inject: ["themePack"]` 使用 |
 
 ```js
-window.dshThemePack.list()                       // [{id,name,nameZh,desc,descZh,tags}, ...] 共 30 项
-window.dshThemePack.get()                        // {id,name,nameZh} 或 null
-window.dshThemePack.set("aurora")                // 切换主题（无效 id 抛错）
-window.dshThemePack.cycle()                      // 轮换到下一个主题
-window.dshThemePack.reset()                      // 恢复 DSH 默认外观
-window.dshThemePack.setMode("light"|"dark"|"system")
-window.dshThemePack.getMode()
+window.dshTheme.list()                       // [{id,name,nameZh,desc,descZh,tags}, ...] 共 30 项
+window.dshTheme.get()                        // {id,name,nameZh} 或 null
+window.dshTheme.set("aurora")                // 切换主题（无效 id 抛错）
+window.dshTheme.cycle()                      // 轮换到下一个主题
+window.dshTheme.reset()                      // 恢复 DSH 默认外观
+window.dshTheme.setMode("light"|"dark"|"system")
+window.dshTheme.getMode()
 ```
 
 ---
