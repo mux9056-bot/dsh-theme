@@ -250,4 +250,4 @@ node scripts/pixelcheck.mjs shots/ocean-light.png eef5fb        # 像素级校�
 
 ## License
 
-MIT
+[Apache License 2.0](LICENSE)
