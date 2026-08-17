@@ -1,18 +1,20 @@
 # 🎨 dsh-theme
 
-**DeepSeek Harness 主题插件 · 30 款即插即用主题**
+**DeepSeek Harness 主题插件 · 30 款即插即用主题 · DSH 原生集成**
 
-一个面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 界面的主题包：既是**零依赖的 DSH 客户端插件**（右下角悬浮换肤器 + 快捷键 + 持久化），也附带 **30 个独立 CSS 文件** 可任意方式接入。
+一个面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 界面的主题包：既是**零依赖的 DSH 客户端插件**（注册进「设置 → 通用」，与内置「外观」选择器并列），也附带 **30 个独立 CSS 文件** 可任意方式接入。
 
 每个主题都完整映射 DSH 官方设计令牌（`--dsw-alias-*` 语义层、`--dsw-specific-*` 组件层、`--shiki-*` 代码高亮），并同时提供**浅色 / 深色**两套变体——深色变体会跟随 DSH 内置的 `data-ds-dark-theme` 自动切换，无需额外设置。
 
 | | |
 |---|---|
-| 插件类型 | DSH web 客户端插件（`platform: web`，`immediately: true`，零依赖） |
+| 插件类型 | DSH web 客户端插件（`platform: web`、`immediately: true`、`inject: ["slots"]`、零依赖） |
 | 主题数量 | 30（每个含 light + dark 双变体，共 60 套配色） |
-| 接入方式 | npm 包安装 / 本地路径 / 纯 CSS 三选一 |
-| 交互 | 右下角 🎨 悬浮按钮、`Ctrl/⌘+Shift+T` 呼出、`Esc` 关闭 |
-| 持久化 | `localStorage`（`dsh-theme:theme` / `dsh-theme:mode`） |
+| 集成方式 | **设置 → 通用 →「主题包」**（`settings.general.item` 槽位，React 组件经平台 seed 渲染） |
+| 程序化接入 | `window.dshTheme` / `ctx.provide("dshTheme")`（Agent 可直接调用） |
+| 持久化 | `localStorage`（`dsh-theme:theme` / `dsh-theme:mode`，旧 `dsh-theme-pack:*` key 自动迁移） |
+
+> 🤖 你是 AI Agent / 想快速接入？直接看 **[docs/AGENT.md](docs/AGENT.md)（Agent 快速接入指南）**。
 
 ---
 
@@ -59,12 +61,14 @@
 
 ```
 dsh-theme/
-├── package.json            # DSH 插件清单：dsh.client { inject:[], platform:"web", immediately:true }
+├── package.json            # DSH 插件清单：dsh.client { inject:["slots"], platform:"web", immediately:true }
 ├── README.md
+├── docs/
+│   └── AGENT.md            # ★ Agent 快速接入指南（安装/API/自定义主题/排障）
 ├── preview.html            # 构建生成：30 主题自包含预览页（file:// 直接打开）
 ├── src/
 │   ├── themes.json         # ★ 30 个主题的唯一数据源（16 个语义插槽 × light/dark）
-│   └── client.template.js  # 客户端插件运行时模板（__THEME_DATA__ 由构建内联）
+│   └── client.template.js  # 客户端插件模板（__THEME_DATA__ 由构建内联；设置页 React 行）
 ├── scripts/
 │   ├── build.mjs           # 构建：生成 themes/*.css、manifest、client.js、preview.html（含令牌校验）
 │   ├── screenshot.mjs      # 开发工具：对运行中的 DSH 界面截图验证主题
@@ -76,45 +80,60 @@ dsh-theme/
 │   ├── index.css           # 全部 30 个主题合一的样式
 │   └── manifest.json       # 机器可读目录（含色板 swatch）
 ├── lib/
-│   ├── client.js           # ★ 构建生成：自包含 DSH 客户端插件（308KB，内联全部主题）
+│   ├── index.js            # ★ 服务端入口（no-op cordis 插件，loader 挂载必需）
+│   ├── client.js           # ★ 构建生成：自包含 DSH 客户端插件（内联全部主题）
 │   └── themes.data.json    # 运行时数据
 └── shots/                  # 开发工具产出的效果截图
 ```
 
 ---
 
-## 快速接入
+## 快速接入（DSH 原生方案）
+
+> ⚠️ **重要**：DSH 的客户端插件（`dsh.client` 清单）**没有自动发现机制**。光把包装进 profile 的
+> `node_modules` 还不够 —— 必须**同时满足三个条件**插件才会出现在 boot manifest 里：
+> ① 依赖装入 profile；② 在 profile 补丁层注册 loader 条目；③ 重启 `dsh web`。
+> 并且包的 `exports` 必须提供 `.` 主入口（`lib/index.js`），因为 loader 会 `import()` 整个包。
 
 ### 方式 A：作为 DSH 客户端插件（推荐）
 
-`lib/client.js` 遵循 DSH 官方客户端插件打包契约（与 `@deepseek-ai/dsh-client-hmr` 一致）：
+`lib/client.js` 遵循 DSH 官方客户端插件打包契约（与 `@deepseek-ai/dsh-client-ui-theme` 同款）：
 
 ```jsonc
 // package.json —— 本项目的 dsh.client 清单
-"dsh": { "client": { "inject": [], "platform": "web", "immediately": true } },
-"exports": { "./client": { "default": "./lib/client.js" } }
+"dsh": { "client": { "inject": ["slots"], "platform": "web", "immediately": true } },
+"exports": {
+  ".":        { "default": "./lib/index.js" },   // 服务端入口（loader import 必需）
+  "./client": { "default": "./lib/client.js" }   // 浏览器 bundle
+}
 ```
 
-DSH 的 web profile 通过 `dsh plugin`（内部转发 pnpm）管理树外插件，插件包名写入 profile 的
-`package.json`，启动时其 `client.js` 会被加载进 boot manifest 并以 `apply(ctx)` 实例化。
-
-**① 本地目录安装（不发布 npm 也能用）：**
+**第 1 步：构建并安装依赖**（本地目录即可，无需发布 npm）：
 
 ```bash
-# 在 DSH web profile 目录下（$DSH_HOME/profiles/web）
+npm run build                                  # 生成 lib/client.js 等构建产物
 dsh plugin --profile web add /absolute/path/to/dsh-theme
 ```
 
-**② 或先构建再以 npm 包方式安装：**
+> 若遇到 corepack 报 `EPERM ... package.json`（它会试图往项目外层写 `packageManager` 字段），
+> 加环境变量重试：`COREPACK_ENABLE_PROJECT_SPEC=0 dsh plugin --profile web add <path>`。
 
-```bash
-npm run build
-# 发布或使用本地 tarball
-npm pack            # 生成 dsh-theme-1.0.0.tgz
-dsh plugin --profile web add ./dsh-theme-1.0.0.tgz
+**第 2 步：在 profile 补丁层注册 loader 条目**（`$DSH_HOME/profiles/web/cordis.patch.yml`）：
+
+```yaml
+- insert:
+    - id: theme
+      name: 'dsh-theme'
 ```
 
-安装后重启 web profile，右下角出现 🎨 悬浮按钮即可换肤。
+**第 3 步：重启 web profile 并刷新页面**
+
+```bash
+dsh web        # 重启（或在你原来的终端里 Ctrl+C 后重跑）
+```
+
+刷新后：左下角侧边栏 → **⚙ 设置 → 通用** → 找到「**主题包 · 30 款**」分区即可换肤。
+（也可在浏览器控制台用 `window.dshTheme` API，见下文。）
 
 ### 方式 B：纯 CSS（零依赖，任何部署都适用）
 
@@ -156,12 +175,13 @@ document.body.setAttribute("data-dsh-theme", "ocean");
 
 | 功能 | 说明 |
 |---|---|
-| 🎨 悬浮按钮 | 右下角，点击展开 30 主题网格 |
-| 快捷键 | `Ctrl/⌘ + Shift + T` 呼出面板，`Esc` 关闭 |
-| 浅/深/自动 | 面板顶部三态切换；「自动」跟随 DSH 内置外观设置 |
-| 持久化 | 选择写入 `localStorage`，刷新/重启后自动恢复 |
-| 程序化 API | `window.dshTheme`（见下） |
-| 服务注入 | `ctx.provide("themePack", api)`，其他插件可 `inject: ["themePack"]` 使用 |
+| 🎨 设置页集成 | 「设置 → 通用」新增「主题包」分区（`settings.general.item` 槽位，`order: 20`，在内置「外观」行之下） |
+| 色卡网格 | 30 张主题色卡（渐变迷你预览 + 强调色圆点 + 色块 chips + 名称），选中高亮 + ✓ |
+| 浅/深/自动 | 行内三态切换；「自动」跟随 DSH 内置外观设置 |
+| 恢复默认 | 行尾「恢复默认」按钮，移除 `data-dsh-theme` 并清空主题 CSS |
+| 持久化 | 选择写入 `localStorage`（`dsh-theme:theme` / `dsh-theme:mode`），刷新/重启后自动恢复 |
+| 程序化 API | `window.dshTheme`（Agent / 控制台可直接调用，见下） |
+| 服务注入 | `ctx.provide("dshTheme", api)`，其他插件可 `inject: ["dshTheme"]` 使用 |
 
 ```js
 window.dshTheme.list()                       // [{id,name,nameZh,desc,descZh,tags}, ...] 共 30 项
@@ -238,15 +258,20 @@ node scripts/pixelcheck.mjs shots/ocean-light.png eef5fb        # 像素级校�
 
 ## 已知限制与说明
 
-- **模式切换**：面板里的「浅色/深色」会直接设置 `body[data-ds-dark-theme]`（persist 到
-  `localStorage`），此时 DSH 内置「外观」设置页的显示可能与实际不一致；点「自动」即可恢复跟随内置设置。
-- **设置页集成**：本包通过悬浮按钮 + API 提供换肤入口，未占用「设置 → 通用」插槽
-  （`settings.general.item`）。如需接入设置页，可参考 `@deepseek-ai/dsh-client-ui-theme` 的
-  `ctx.slots.inject("settings.general.item", ...)` 模式扩展。
-- **主题标识**：主题通过 `body[data-dsh-theme="<id>"]` 生效，与 DSH 内置外观（浅/深）正交，
-  二者可自由组合。
-- **兼容性**：令牌名取自 DSH `0.1.0-rc.6` 的 Web 产物；DSH 升级若改动令牌名，用
-  `npm run verify` 复检。
+- **设置页集成**：主题入口在「设置 → 通用 → 主题包」，与内置「外观」选择器并列；没有页面级浮动控件
+  （DSH 理念：插件应注册进宿主 UI 槽位，而不是独立悬浮组件）。
+- **模式切换**：行内「浅色/深色」会直接设置 `body[data-ds-dark-theme]`（persist 到 `localStorage`），
+  此时 DSH 内置「外观」设置页的显示可能与实际不一致；点「自动」即可恢复跟随内置设置。
+- **loader 条目是硬性要求**：DSH 的 `client-modules` 只扫描 loader entries（补丁层里的行），
+  不会自动发现 `node_modules` 里的 `dsh.client` 包；漏掉 `cordis.patch.yml` 的 `insert` 会导致插件不进
+  boot manifest。参见 [docs/AGENT.md](docs/AGENT.md) 的排障章节。
+- **服务端入口必需**：loader 会 `import()` 插件包，因此 `exports["."]` 与 `lib/index.js` 缺一不可；
+  漏掉会报 `ERR_PACKAGE_PATH_NOT_EXPORTED` 或 `ERR_MODULE_NOT_FOUND`。
+- **样式隔离**：设置行样式与当前主题 CSS 分属两个 `<style>` 元素，任何主题切换/清空都不会破坏行样式。
+- **主题标识**：主题通过 `body[data-dsh-theme="<id>"]` 生效，与 DSH 内置外观（浅/深）正交，二者可自由组合。
+- **兼容性**：令牌名取自 DSH `0.1.0-rc.6` 的 Web 产物；DSH 升级若改动令牌名，用 `npm run verify` 复检。
+- **依赖平台 seed**：设置行用 `react` + `slots` 服务（DSH 平台 seed，`inject: ["slots"]`），
+  需要 DSH 版本提供这两个 seed（`0.1.0-rc.6` 起包含）。
 
 ## License
 
