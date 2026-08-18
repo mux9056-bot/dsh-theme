@@ -12,8 +12,8 @@
     ],
     "swatch": {
       "light": [
-        "#eef5fb",
-        "#ffffff",
+        "#d5e7ef",
+        "#f0f7f8",
         "#0e7490",
         "#0f2440"
       ],
@@ -38,8 +38,8 @@
     ],
     "swatch": {
       "light": [
-        "#f1f4f9",
-        "#ffffff",
+        "#e5ebf8",
+        "#f8fafe",
         "#2563eb",
         "#0b1c33"
       ],
@@ -64,8 +64,8 @@
     ],
     "swatch": {
       "light": [
-        "#f2f4fb",
-        "#ffffff",
+        "#e6e1fa",
+        "#f8f4fe",
         "#7c3aed",
         "#221a3e"
       ],
@@ -90,8 +90,8 @@
     ],
     "swatch": {
       "light": [
-        "#f7f2f0",
-        "#ffffff",
+        "#f6e3d9",
+        "#fef6f2",
         "#ea580c",
         "#2b1712"
       ],
@@ -115,8 +115,8 @@
     ],
     "swatch": {
       "light": [
-        "#f0f6f0",
-        "#ffffff",
+        "#daeade",
+        "#f2f8f4",
         "#15803d",
         "#14261a"
       ],
@@ -141,8 +141,8 @@
     ],
     "swatch": {
       "light": [
-        "#fff4f6",
-        "#ffffff",
+        "#fbdde8",
+        "#fdf2f7",
         "#db2777",
         "#3d1420"
       ],
@@ -167,8 +167,8 @@
     ],
     "swatch": {
       "light": [
-        "#fdf4ee",
-        "#ffffff",
+        "#fcebe0",
+        "#fef9f7",
         "#ea580c",
         "#331a10"
       ],
@@ -244,8 +244,8 @@
     ],
     "swatch": {
       "light": [
-        "#faf6ef",
-        "#fffdf8",
+        "#f4eee5",
+        "#fcf9f2",
         "#8a5a2b",
         "#2f2417"
       ],
@@ -270,8 +270,8 @@
     ],
     "swatch": {
       "light": [
-        "#fff9e8",
-        "#fffdf5",
+        "#f8ead4",
+        "#fbf5e9",
         "#b45309",
         "#33260e"
       ],
@@ -296,8 +296,8 @@
     ],
     "swatch": {
       "light": [
-        "#eff8f2",
-        "#ffffff",
+        "#d3ece2",
+        "#eef8f5",
         "#059669",
         "#0e2b1d"
       ],
@@ -321,8 +321,8 @@
     ],
     "swatch": {
       "light": [
-        "#f6f2fd",
-        "#ffffff",
+        "#efe7fc",
+        "#fbf8fe",
         "#7c3aed",
         "#241538"
       ],
@@ -347,8 +347,8 @@
     ],
     "swatch": {
       "light": [
-        "#eef6fb",
-        "#ffffff",
+        "#d0e9f2",
+        "#edf7f9",
         "#0891b2",
         "#0c2438"
       ],
@@ -373,8 +373,8 @@
     ],
     "swatch": {
       "light": [
-        "#f8f1e3",
-        "#fdf8ee",
+        "#f2decb",
+        "#f9ede0",
         "#c2410c",
         "#3a2a17"
       ],
@@ -399,8 +399,8 @@
     ],
     "swatch": {
       "light": [
-        "#f4f6f4",
-        "#ffffff",
+        "#e7f1ea",
+        "#f7fcf9",
         "#16a34a",
         "#152117"
       ],
@@ -425,8 +425,8 @@
     ],
     "swatch": {
       "light": [
-        "#f7f3e8",
-        "#fffcf4",
+        "#f1e5d4",
+        "#fbf4e8",
         "#b45309",
         "#2e2614"
       ],
@@ -451,8 +451,8 @@
     ],
     "swatch": {
       "light": [
-        "#eef6fc",
-        "#ffffff",
+        "#cde6f5",
+        "#ecf6fb",
         "#0284c7",
         "#0b2438"
       ],
@@ -477,8 +477,8 @@
     ],
     "swatch": {
       "light": [
-        "#f1f1fb",
-        "#ffffff",
+        "#e4e4fa",
+        "#f7f7fe",
         "#6366f1",
         "#1c1a3e"
       ],
@@ -503,8 +503,8 @@
     ],
     "swatch": {
       "light": [
-        "#fdf2ef",
-        "#ffffff",
+        "#fceae4",
+        "#fefaf8",
         "#ea580c",
         "#331510"
       ],
@@ -529,8 +529,8 @@
     ],
     "swatch": {
       "light": [
-        "#f0f3f6",
-        "#ffffff",
+        "#e7edf3",
+        "#f9fcfd",
         "#0369a1",
         "#16202b"
       ],
@@ -555,8 +555,8 @@
     ],
     "swatch": {
       "light": [
-        "#fbf4e5",
-        "#fffdf6",
+        "#f9ebd5",
+        "#fef8ed",
         "#d97706",
         "#33240f"
       ],
@@ -581,8 +581,8 @@
     ],
     "swatch": {
       "light": [
-        "#f5f8ec",
-        "#ffffff",
+        "#e8f0d8",
+        "#f7faf3",
         "#65a30d",
         "#232b12"
       ],
@@ -607,8 +607,8 @@
     ],
     "swatch": {
       "light": [
-        "#f4f1ea",
-        "#fdfbf6",
+        "#efe9dd",
+        "#faf6ef",
         "#9a6b16",
         "#241f14"
       ],
@@ -633,8 +633,8 @@
     ],
     "swatch": {
       "light": [
-        "#faf7fd",
-        "#ffffff",
+        "#f6f2fd",
+        "#fdfcff",
         "#a78bfa",
         "#2c2340"
       ],
@@ -659,8 +659,8 @@
     ],
     "swatch": {
       "light": [
-        "#f6f3fc",
-        "#ffffff",
+        "#efe8fc",
+        "#fbf9ff",
         "#8b5cf6",
         "#241b3a"
       ],
@@ -711,8 +711,8 @@
     ],
     "swatch": {
       "light": [
-        "#fdf3f5",
-        "#ffffff",
+        "#f7dce2",
+        "#fbf2f4",
         "#be123c",
         "#331421"
       ],
@@ -737,8 +737,8 @@
     ],
     "swatch": {
       "light": [
-        "#edfaf7",
-        "#ffffff",
+        "#d0ede9",
+        "#eef7f6",
         "#0d9488",
         "#0c2b26"
       ],
