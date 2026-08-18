@@ -2,6 +2,15 @@
   "name": "dsh-theme",
   "version": "1.0.0",
   "description": "30-theme pack for the DeepSeek Harness web UI — a zero-dependency DSH client plugin plus drop-in CSS themes.",
+  "author": "mux9056-bot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mux9056-bot/dsh-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mux9056-bot/dsh-theme/issues"
+  },
+  "homepage": "https://github.com/mux9056-bot/dsh-theme",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
