@@ -5,6 +5,12 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.0.1] - 2026-08-18
+
+### 修复
+
+- 补齐 `dsh.bundle` manifest（`cordis.patch.yml`）：插件现在**自动注册** loader 条目，`dsh plugin add dsh-theme` 后无需再手工编辑 profile 的 `cordis.patch.yml`；同时满足 awesome-dsh-plugin 插件市场的收录要求（此前只有 `dsh.client` 无法通过收录校验）。
+
 ## [1.0.0] - 2026-08-18
 
 首个公开发布版本：面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 界面的 30 款主题包，既是零依赖的 DSH 客户端插件，也附带 30 个独立 CSS 文件。

@@ -1,0 +1,6 @@
+# dsh bundle patch: self-registers this plugin into a profile's loader stack.
+# (Client plugins have no auto-discovery — this insert is what makes the
+# theme UI appear in Settings → General after `dsh plugin add dsh-theme`.)
+- insert:
+    - id: theme
+      name: 'dsh-theme'

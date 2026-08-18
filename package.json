@@ -1,6 +1,6 @@
 {
   "name": "dsh-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "30-theme pack for the DeepSeek Harness web UI — a zero-dependency DSH client plugin plus drop-in CSS themes.",
   "author": "mux9056-bot",
   "repository": {
@@ -23,6 +23,9 @@
     "./package.json": "./package.json"
   },
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "inject": ["slots"],
       "platform": "web",
@@ -34,7 +37,8 @@
     "themes",
     "preview.html",
     "scripts",
-    "docs"
+    "docs",
+    "cordis.patch.yml"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
